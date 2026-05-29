@@ -1,5 +1,6 @@
 {
   "rewrites": [
+    { "source": "/ligeramente", "destination": "/landing.html" },
     { "source": "/landing", "destination": "/landing.html" },
     { "source": "/bienvenida", "destination": "/bienvenida.html" }
   ]
