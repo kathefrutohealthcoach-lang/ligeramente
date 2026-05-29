@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ligera-Mente — Kathe Fruto Health Coach</title>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.cdnfonts.com/css/the-seasons" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --teal:#7BC4BC;--teal-d:#4a9e96;--teal-pale:#e8f7f5;--teal-xpale:#f2fbf9;
+  --lila:#C09BC5;--lila-d:#9a6fa0;--lila-pale:#f5edf7;--lila-xpale:#faf5fb;
+  --cream:#fdf9f4;--warm:#f7f2eb;
+  --dark:#2a2622;--mid:#5a5450;--light:#8a8380;--border:#e6dfd6;
+  --r:Raleway,sans-serif;--s:'The Seasons',serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--r);color:var(--dark);background:var(--cream);overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:0 48px;height:68px;display:flex;align-items:center;justify-content:space-between;background:rgba(253,249,244,.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);transition:all .3s}
+.nav-brand{display:flex;align-items:center;gap:12px}
+.nav-logo-img{height:38px;width:auto}
+.nav-tagline{font-family:var(--r);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--light);border-left:1px solid var(--border);padding-left:12px}
+.nav-links{display:flex;align-items:center;gap:32px}
+.nav-link{font-family:var(--r);font-size:13px;color:var(--mid);text-decoration:none;letter-spacing:.03em;transition:color .2s}
+.nav-link:hover{color:var(--teal-d)}
+.nav-cta{background:var(--lila-d);color:#fff;padding:10px 24px;border-radius:50px;font-family:var(--r);font-size:13px;font-weight:500;text-decoration:none;transition:all .2s;letter-spacing:.02em}
+.nav-cta:hover{background:#8a5f91;transform:translateY(-1px)}
+
+/* HERO */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:88px 80px 60px;gap:60px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-100px;right:-100px;width:500px;height:500px;background:radial-gradient(circle,rgba(192,155,197,.15) 0%,transparent 65%);border-radius:50%;pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:-80px;left:200px;width:400px;height:400px;background:radial-gradient(circle,rgba(123,196,188,.12) 0%,transparent 65%);border-radius:50%;pointer-events:none}
+.hero-left{position:relative;z-index:1}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--teal-pale);color:var(--teal-d);padding:7px 18px;border-radius:50px;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;margin-bottom:32px;border:1px solid rgba(123,196,188,.3)}
+.hero-eyebrow::before{content:'✦';font-size:9px}
+.hero h1{font-family:var(--s);font-size:clamp(46px,5.5vw,72px);font-weight:400;line-height:1.08;color:var(--dark);margin-bottom:14px}
+.hero h1 .accent{color:var(--lila-d);font-style:italic}
+.hero h1 .accent2{color:var(--teal-d)}
+.hero-sub{font-family:var(--s);font-size:clamp(17px,2vw,22px);font-weight:300;font-style:italic;color:var(--lila-d);margin-bottom:26px;line-height:1.5}
+.hero-desc{font-size:15px;line-height:1.9;color:var(--mid);margin-bottom:44px;max-width:480px}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn-p{background:var(--lila-d);color:#fff;padding:15px 34px;border-radius:50px;font-family:var(--r);font-size:14px;font-weight:500;text-decoration:none;transition:all .25s;letter-spacing:.02em;display:inline-flex;align-items:center;gap:8px}
+.btn-p:hover{background:#8a5f91;transform:translateY(-2px);box-shadow:0 8px 24px rgba(154,111,160,.3)}
+.btn-s{background:transparent;color:var(--teal-d);border:1.5px solid var(--teal);padding:14px 34px;border-radius:50px;font-family:var(--r);font-size:14px;font-weight:500;text-decoration:none;transition:all .25s}
+.btn-s:hover{background:var(--teal-pale);transform:translateY(-2px)}
+.hero-stats{display:flex;gap:32px;margin-top:48px;padding-top:32px;border-top:1px solid var(--border)}
+.stat-item{text-align:center}
+.stat-num{font-family:var(--s);font-size:32px;font-weight:400;color:var(--teal-d)}
+.stat-label{font-size:11px;color:var(--light);letter-spacing:.06em;text-transform:uppercase;margin-top:4px}
+.hero-right{position:relative;z-index:1}
+.hero-img-wrap{position:relative;border-radius:32px 32px 80px 32px;overflow:hidden;aspect-ratio:3/4}
+.hero-img-wrap img{width:100%;height:100%;object-fit:cover;object-position:top center}
+.hero-img-badge{position:absolute;bottom:24px;left:24px;background:rgba(253,249,244,.95);backdrop-filter:blur(10px);border-radius:16px;padding:16px 20px;border:1px solid var(--border)}
+.hero-img-badge p{font-size:12px;color:var(--mid);font-weight:500}
+.hero-img-badge span{font-family:var(--s);font-size:20px;color:var(--lila-d);display:block}
+.hero-float-pill{position:absolute;top:24px;right:-16px;background:var(--lila-d);color:#fff;padding:10px 20px;border-radius:50px;font-size:12px;font-weight:500;white-space:nowrap;box-shadow:0 8px 24px rgba(154,111,160,.35)}
+.scroll-ind{display:flex;flex-direction:column;align-items:center;gap:10px;color:var(--light);font-size:11px;letter-spacing:.07em;text-transform:uppercase;margin-top:48px}
+.scroll-line{width:1px;height:50px;background:linear-gradient(to bottom,var(--border),transparent);animation:scrl 1.8s ease-in-out infinite}
+@keyframes scrl{0%,100%{transform:scaleY(1);opacity:.5}50%{transform:scaleY(1.3);opacity:1}}
+
+/* SECTION BASICS */
+.sec{padding:88px 80px;max-width:1200px;margin:0 auto}
+.sec-full{padding:88px 80px}
+.sec-full-in{max-width:1200px;margin:0 auto}
+.tag{display:inline-flex;align-items:center;gap:6px;background:var(--teal-pale);color:var(--teal-d);padding:6px 16px;border-radius:50px;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;margin-bottom:20px;border:1px solid rgba(123,196,188,.25)}
+.tag::before{content:'✦';font-size:8px}
+.tag-lila{background:var(--lila-pale);color:var(--lila-d);border-color:rgba(192,155,197,.25)}
+.tag-lila::before{color:var(--lila-d)}
+h2.st{font-family:var(--s);font-size:clamp(36px,4vw,54px);font-weight:400;line-height:1.15;color:var(--dark);margin-bottom:16px}
+h2.st em{font-style:italic;color:var(--lila-d)}
+h2.st strong{font-weight:400;color:var(--teal-d)}
+.lead{font-size:16px;line-height:1.9;color:var(--mid);max-width:580px;margin-bottom:50px}
+
+/* MARQUEE */
+.marquee-wrap{background:var(--lila-d);padding:16px 0;overflow:hidden;white-space:nowrap}
+.marquee-inner{display:inline-flex;gap:48px;animation:marquee 22s linear infinite}
+.marquee-item{font-family:var(--s);font-size:17px;font-style:italic;color:rgba(255,255,255,.9);letter-spacing:.02em}
+.marquee-dot{color:rgba(255,255,255,.4);font-size:10px;margin:0 4px}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* PAIN */
+.pain-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.pain-card{background:#fff;border:1px solid var(--border);border-radius:24px;padding:28px;transition:all .25s;cursor:default}
+.pain-card:hover{border-color:var(--lila);transform:translateY(-4px);box-shadow:0 16px 40px rgba(192,155,197,.15)}
+.pain-emoji{font-size:28px;margin-bottom:16px;display:block}
+.pain-card h3{font-family:var(--s);font-size:19px;font-weight:400;color:var(--dark);margin-bottom:10px;line-height:1.3}
+.pain-card p{font-size:13.5px;line-height:1.75;color:var(--mid)}
+
+/* PROMISE */
+.promise{background:linear-gradient(130deg,var(--lila-d) 0%,var(--teal-d) 100%);border-radius:32px;padding:72px;text-align:center;color:#fff;margin:20px 0;position:relative;overflow:hidden}
+.promise::before{content:'LIGERA-MENTE';font-family:var(--s);font-size:120px;color:rgba(255,255,255,.05);position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);white-space:nowrap;pointer-events:none}
+.promise .tag{background:rgba(255,255,255,.15);color:rgba(255,255,255,.9);border-color:rgba(255,255,255,.2)}
+.promise .tag::before{color:rgba(255,255,255,.6)}
+.promise h2{font-family:var(--s);font-size:clamp(28px,4vw,46px);font-weight:400;line-height:1.3;margin-bottom:20px;color:#fff}
+.promise p{font-size:16px;line-height:1.85;color:rgba(255,255,255,.88);max-width:620px;margin:0 auto}
+
+/* FOR WHO */
+.forwho-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.symptom-wrap{background:linear-gradient(145deg,var(--lila-xpale),var(--teal-xpale));border-radius:28px;padding:44px 36px;border:1px solid rgba(192,155,197,.2)}
+.symptom-wrap h3{font-family:var(--s);font-size:26px;font-weight:400;color:var(--dark);margin-bottom:26px}
+.symp-list{list-style:none}
+.symp-list li{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid rgba(192,155,197,.2);font-size:14px;color:var(--mid);line-height:1.5}
+.symp-list li:last-child{border:none}
+.sdot{width:7px;height:7px;border-radius:50%;background:var(--lila);flex-shrink:0}
+.forwho-text p{font-size:15px;line-height:1.9;color:var(--mid);margin-bottom:18px}
+
+/* PILLARS */
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.pillar{background:#fff;border:1px solid var(--border);border-radius:28px;padding:38px 28px;position:relative;overflow:hidden;transition:all .25s}
+.pillar:hover{transform:translateY(-5px);box-shadow:0 20px 50px rgba(0,0,0,.07)}
+.pillar-bg{position:absolute;top:-10px;right:-10px;font-family:var(--s);font-size:80px;color:var(--teal-pale);line-height:1;pointer-events:none;font-weight:400}
+.pillar-icon{width:54px;height:54px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:22px}
+.p1 .pillar-icon{background:var(--teal-pale)}
+.p2 .pillar-icon{background:var(--lila-pale)}
+.p3 .pillar-icon{background:#fef4e6}
+.pillar h3{font-family:var(--s);font-size:22px;font-weight:400;color:var(--dark);margin-bottom:12px;line-height:1.3}
+.pillar p{font-size:13.5px;line-height:1.75;color:var(--mid);margin-bottom:16px}
+.pillar ul{list-style:none}
+.pillar ul li{font-size:13px;color:var(--mid);padding:6px 0;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;gap:8px;line-height:1.5}
+.pillar ul li:last-child{border:none}
+.pillar ul li::before{content:'✦';color:var(--teal);font-size:9px;flex-shrink:0;margin-top:3px}
+
+/* WEEKS */
+.weeks-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.wk{background:#fff;border:1px solid var(--border);border-radius:18px;padding:20px;transition:all .2s}
+.wk:hover{border-color:var(--teal);transform:translateY(-2px)}
+.wk-num{font-size:11px;color:var(--teal-d);font-weight:600;letter-spacing:.07em;text-transform:uppercase;margin-bottom:6px}
+.wk h4{font-family:var(--s);font-size:16px;font-weight:400;color:var(--dark);margin-bottom:6px;line-height:1.3}
+.wk p{font-size:12px;color:var(--light);line-height:1.6}
+.wk-plus{background:linear-gradient(135deg,var(--lila-pale),var(--teal-pale));border-color:transparent}
+
+/* INCLUDES */
+.inc-wrap{display:grid;grid-template-columns:3fr 2fr;gap:48px;align-items:start}
+.inc-list{list-style:none}
+.inc-li{display:flex;gap:16px;padding:18px 0;border-bottom:1px solid var(--border);align-items:flex-start}
+.inc-li:last-child{border:none}
+.inc-ico{width:40px;height:40px;background:var(--teal-pale);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px}
+.inc-tx strong{display:block;font-size:14px;font-weight:600;color:var(--dark);margin-bottom:3px}
+.inc-tx span{font-size:13px;color:var(--mid);line-height:1.6}
+.bonus-box{background:var(--lila-xpale);border-radius:24px;padding:36px;border:1px solid rgba(192,155,197,.2)}
+.bonus-box h3{font-family:var(--s);font-size:24px;font-weight:400;color:var(--dark);margin-bottom:22px}
+.bns{display:flex;gap:12px;padding:16px 0;border-bottom:1px solid rgba(192,155,197,.15);align-items:flex-start}
+.bns:last-child{border:none}
+.bns-badge{background:var(--lila);color:#fff;font-size:10px;font-weight:600;padding:4px 10px;border-radius:50px;white-space:nowrap;flex-shrink:0;margin-top:2px;letter-spacing:.04em}
+.bns strong{display:block;font-size:13.5px;font-weight:600;color:var(--dark);margin-bottom:3px}
+.bns span{font-size:12.5px;color:var(--mid);line-height:1.6}
+
+/* KATHE */
+.kathe-sec{padding:88px 80px;background:var(--warm)}
+.kathe-in{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:360px 1fr;gap:60px;align-items:center}
+.kathe-photo{border-radius:28px 28px 80px 28px;overflow:hidden;aspect-ratio:3/4}
+.kathe-photo img{width:100%;height:100%;object-fit:cover;object-position:top center}
+.kathe-content h2{font-family:var(--s);font-size:42px;font-weight:400;color:var(--dark);margin-bottom:6px}
+.kathe-content .role{font-size:12px;color:var(--teal-d);letter-spacing:.1em;text-transform:uppercase;font-weight:600;margin-bottom:22px;display:block}
+.kathe-content p{font-size:15px;line-height:1.9;color:var(--mid);margin-bottom:16px}
+.kathe-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+.ktag{background:#fff;border:1px solid var(--border);border-radius:50px;padding:7px 16px;font-size:12px;color:var(--mid);font-weight:500}
+
+/* PRICING */
+.pricing-sec{padding:88px 80px;background:var(--warm)}
+.pricing-in{max-width:1200px;margin:0 auto}
+.plans-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:50px}
+.plan{background:#fff;border:1.5px solid var(--border);border-radius:32px;padding:36px 30px;position:relative;transition:all .3s;display:flex;flex-direction:column}
+.plan:hover{transform:translateY(-5px);box-shadow:0 24px 60px rgba(0,0,0,.09)}
+.plan-pop{border-color:var(--lila);box-shadow:0 12px 40px rgba(192,155,197,.2)}
+.pop-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--lila-d);color:#fff;font-size:11px;font-weight:600;padding:6px 20px;border-radius:50px;white-space:nowrap;letter-spacing:.05em}
+.plan-name{font-size:11px;color:var(--teal-d);font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px}
+.plan-dur{font-family:var(--s);font-size:30px;font-weight:400;color:var(--dark);margin-bottom:6px;line-height:1.1}
+.plan-ses{display:inline-flex;align-items:center;gap:6px;background:var(--teal-pale);border-radius:50px;padding:4px 12px;font-size:11px;color:var(--teal-d);font-weight:600;margin-bottom:20px}
+.plan-divider{height:1px;background:var(--border);margin:0 0 20px}
+.price-block-u{background:var(--teal-xpale);border-radius:16px;padding:18px 20px;margin-bottom:12px;border:1px solid rgba(123,196,188,.25)}
+.price-label{font-size:10px;color:var(--teal-d);font-weight:600;letter-spacing:.08em;text-transform:uppercase;margin-bottom:5px}
+.price-main{font-family:var(--s);font-size:36px;font-weight:400;color:var(--teal-d);line-height:1}
+.price-note{font-size:11px;color:var(--mid);margin-top:4px}
+.cta-u{display:block;text-align:center;background:var(--teal-d);color:#fff;padding:12px 20px;border-radius:50px;font-family:var(--r);font-size:13px;font-weight:600;text-decoration:none;transition:all .2s;margin-bottom:8px;letter-spacing:.02em}
+.cta-u:hover{background:#3d8880;transform:translateY(-1px)}
+.price-block-c{background:var(--lila-xpale);border-radius:16px;padding:18px 20px;margin-bottom:12px;border:1px solid rgba(192,155,197,.2)}
+.price-label-c{font-size:10px;color:var(--lila-d);font-weight:600;letter-spacing:.08em;text-transform:uppercase;margin-bottom:5px}
+.price-main-c{font-family:var(--s);font-size:28px;font-weight:400;color:var(--lila-d);line-height:1}
+.cta-c{display:block;text-align:center;background:var(--lila-d);color:#fff;padding:12px 20px;border-radius:50px;font-family:var(--r);font-size:13px;font-weight:600;text-decoration:none;transition:all .2s;margin-bottom:16px;letter-spacing:.02em}
+.cta-c:hover{background:#8a5f91;transform:translateY(-1px)}
+.plan-feats{list-style:none;margin-top:auto}
+.plan-feats li{display:flex;gap:10px;padding:8px 0;border-bottom:1px solid var(--border);font-size:12.5px;color:var(--mid);align-items:flex-start;line-height:1.5}
+.plan-feats li:last-child{border:none}
+.plan-feats li::before{content:'✦';color:var(--teal);font-size:9px;flex-shrink:0;margin-top:3px}
+
+/* QUOTE */
+.quote-sec{padding:80px 80px;text-align:center;background:var(--warm)}
+.quote-in{max-width:760px;margin:0 auto}
+.q-marks{font-family:var(--s);font-size:80px;color:var(--lila-pale);line-height:.5;margin-bottom:8px}
+.big-q{font-family:var(--s);font-size:clamp(24px,3.2vw,38px);font-weight:300;font-style:italic;line-height:1.5;color:var(--dark);margin-bottom:20px}
+.big-q em{color:var(--lila-d);font-style:normal;font-weight:400}
+.q-author{font-size:12px;color:var(--light);letter-spacing:.08em;text-transform:uppercase}
+
+/* FAQ */
+.faq-in{max-width:760px;margin:0 auto}
+.faq-item{border-bottom:1px solid var(--border);padding:22px 0;cursor:pointer}
+.faq-q{font-size:15px;font-weight:500;color:var(--dark);display:flex;justify-content:space-between;align-items:center;gap:16px;line-height:1.4}
+.faq-q .faq-icon{width:28px;height:28px;border-radius:50%;background:var(--teal-pale);display:flex;align-items:center;justify-content:center;color:var(--teal-d);font-size:18px;flex-shrink:0;transition:all .3s;font-weight:300}
+.faq-a{font-size:14px;line-height:1.85;color:var(--mid);margin-top:14px;display:none;padding-right:44px}
+.faq-item.open .faq-icon{background:var(--lila-pale);color:var(--lila-d);transform:rotate(45deg)}
+.faq-item.open .faq-a{display:block}
+
+/* FINAL CTA */
+.final-sec{padding:100px 80px;text-align:center;position:relative;overflow:hidden}
+.final-sec::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:700px;height:700px;background:radial-gradient(circle,rgba(192,155,197,.1) 0%,transparent 60%);border-radius:50%;pointer-events:none}
+.final-sec h2{font-family:var(--s);font-size:clamp(38px,5.5vw,64px);font-weight:400;line-height:1.15;margin-bottom:18px;color:var(--dark)}
+.final-sec h2 em{font-style:italic;color:var(--lila-d)}
+.final-sec p{font-size:17px;color:var(--mid);max-width:520px;margin:0 auto 44px;line-height:1.85}
+.final-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:32px}
+.wa-btn{display:inline-flex;align-items:center;gap:8px;background:#25D366;color:#fff;padding:14px 28px;border-radius:50px;font-family:var(--r);font-size:14px;font-weight:500;text-decoration:none;transition:all .2s}
+.wa-btn:hover{background:#1fbe5a;transform:translateY(-2px)}
+.footer-note{font-size:12px;color:var(--light);letter-spacing:.04em}
+
+/* FOOTER */
+footer{background:var(--dark);padding:40px 80px;display:flex;align-items:center;justify-content:space-between}
+footer p{color:rgba(255,255,255,.45);font-size:12px}
+footer strong{color:rgba(255,255,255,.7);font-weight:500}
+
+/* DIVIDER */
+.div-line{height:1px;background:linear-gradient(to right,transparent,var(--border),transparent);margin:0 80px}
+
+/* ANIMATIONS */
+.fade{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s ease}
+.fade.vis{opacity:1;transform:translateY(0)}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;padding:100px 32px 60px;text-align:center}
+  .hero-right{order:-1}
+  .hero-img-wrap{max-height:380px;border-radius:24px}
+  .hero-desc{max-width:100%}
+  .hero-btns{justify-content:center}
+  .hero-stats{justify-content:center}
+  .hero-float-pill{right:0;top:16px}
+  nav{padding:0 24px}
+  .sec{padding:60px 32px}
+  .sec-full{padding:60px 32px}
+  .kathe-sec{padding:60px 32px}
+  .pricing-sec{padding:60px 32px}
+  .quote-sec{padding:60px 32px}
+  .final-sec{padding:70px 32px}
+  footer{padding:32px;flex-direction:column;gap:8px;text-align:center}
+  .div-line{margin:0 32px}
+  .pain-grid{grid-template-columns:1fr 1fr}
+  .pillars{grid-template-columns:1fr}
+  .weeks-grid{grid-template-columns:repeat(2,1fr)}
+  .inc-wrap{grid-template-columns:1fr}
+  .kathe-in{grid-template-columns:1fr;text-align:center}
+  .kathe-photo{max-width:280px;margin:0 auto}
+  .kathe-tags{justify-content:center}
+  .plans-grid{grid-template-columns:1fr}
+  .forwho-grid{grid-template-columns:1fr}
+  .nav-links{display:none}
+}
+@media(max-width:560px){.pain-grid{grid-template-columns:1fr}.weeks-grid{grid-template-columns:1fr}}
+
+/* VSL */
+.vsl-section{padding:80px 40px;background:var(--dark);text-align:center}
+.vsl-inner{max-width:860px;margin:0 auto}
+.vsl-label{display:inline-flex;align-items:center;gap:8px;background:rgba(123,196,188,.15);color:var(--teal);border:1px solid rgba(123,196,188,.3);padding:8px 20px;border-radius:50px;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;margin-bottom:24px}
+.vsl-dot{width:8px;height:8px;border-radius:50%;background:var(--teal);animation:pulse 1.5s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.3)}}
+.vsl-title{font-family:var(--s);font-size:clamp(28px,3.5vw,44px);font-weight:400;color:#fff;line-height:1.2;margin-bottom:36px}
+.vsl-title em{font-style:italic;color:var(--lila)}
+.vsl-frame-wrap{position:relative;margin-bottom:28px}
+.vsl-frame-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:80%;height:80%;background:radial-gradient(ellipse,rgba(192,155,197,.2) 0%,transparent 70%);pointer-events:none;z-index:0}
+.vsl-frame{position:relative;z-index:1;border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,.1);box-shadow:0 32px 80px rgba(0,0,0,.5);aspect-ratio:16/9;cursor:pointer;background:#000}
+.vsl-frame img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s,opacity .3s}
+.vsl-frame:hover img{transform:scale(1.02);opacity:.85}
+.vsl-frame iframe{width:100%;height:100%;display:block;position:absolute;top:0;left:0}
+.vsl-play-btn{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:80px;height:80px;background:rgba(154,111,160,.92);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all .25s;z-index:2;box-shadow:0 8px 32px rgba(0,0,0,.4)}
+.vsl-frame:hover .vsl-play-btn{background:var(--lila-d);transform:translate(-50%,-50%) scale(1.1);box-shadow:0 12px 40px rgba(192,155,197,.5)}
+.vsl-play-btn svg{margin-left:5px}
+.vsl-duration{position:absolute;bottom:16px;right:20px;background:rgba(0,0,0,.6);color:rgba(255,255,255,.85);font-size:12px;font-weight:500;padding:4px 10px;border-radius:6px;z-index:2;font-family:var(--r)}
+.vsl-sub{font-size:14px;color:rgba(255,255,255,.5);letter-spacing:.02em}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">
+    <img src="https://i.ibb.co/zVzggsX2/Programacion-del-mes-vitalclub-membresia-3.jpg" alt="Kathe Fruto" class="nav-logo-img" onerror="this.style.display='none'">
+    <span class="nav-tagline">Health Coach</span>
+  </div>
+  <div class="nav-links">
+    <a href="#programa" class="nav-link">El programa</a>
+    <a href="#quien" class="nav-link">¿Para quién?</a>
+    <a href="#planes" class="nav-link">Planes</a>
+  </div>
+  <a href="#planes" class="nav-cta">Quiero unirme 💜</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Programa premium de bienestar integral</div>
+    <h1>Siente lo que es<br>estar <span class="accent">verdaderamente</span><br><span class="accent2">Ligera-Mente</span></h1>
+    <p class="hero-sub">sin inflamación · sin ese cansancio · sin confusión</p>
+    <p class="hero-desc">Un proceso de transformación de 2, 3 o 6 meses donde reducimos la inflamación desde la raíz — no con dietas restrictivas, sino con acompañamiento real, nutrición antiinflamatoria, movimiento consciente y salud mental integrada.</p>
+    <div class="hero-btns">
+      <a href="#planes" class="btn-p">Quiero unirme ✦</a>
+      <a href="#programa" class="btn-s">Conocer el programa</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item"><div class="stat-num">3</div><div class="stat-label">pilares integrados</div></div>
+      <div class="stat-item"><div class="stat-num">12</div><div class="stat-label">semanas de proceso</div></div>
+      <div class="stat-item"><div class="stat-num">1:1</div><div class="stat-label">sesiones con Kathe</div></div>
+    </div>
+    <div class="scroll-ind">descubrir<div class="scroll-line"></div></div>
+  </div>
+  <div class="hero-right">
+    <div style="display:flex;flex-direction:column;gap:16px">
+
+      <!-- Program name card -->
+      <div style="background:linear-gradient(130deg,var(--lila-d),var(--teal-d));border-radius:28px;padding:36px 32px;color:#fff;position:relative;overflow:hidden">
+        <div style="position:absolute;top:-20px;right:-20px;font-family:var(--s);font-size:90px;color:rgba(255,255,255,.06);line-height:1;pointer-events:none;white-space:nowrap">LIGERA</div>
+        <div style="font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.65);margin-bottom:10px">Programa Premium · Kathe Fruto</div>
+        <div style="font-family:var(--s);font-size:clamp(32px,4vw,48px);font-weight:400;line-height:1.05;color:#fff;margin-bottom:6px">Ligera-<em style="font-style:italic;color:rgba(255,255,255,.8)">Mente</em></div>
+        <div style="font-family:var(--s);font-size:16px;font-style:italic;color:rgba(255,255,255,.75);margin-bottom:20px">Bienestar digestivo e integral</div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <span style="background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.2);color:#fff;padding:6px 14px;border-radius:50px;font-size:12px;font-weight:500">2, 3 o 6 meses</span>
+          <span style="background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.2);color:#fff;padding:6px 14px;border-radius:50px;font-size:12px;font-weight:500">100% virtual</span>
+          <span style="background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.2);color:#fff;padding:6px 14px;border-radius:50px;font-size:12px;font-weight:500">Sesiones 1:1</span>
+        </div>
+      </div>
+
+      <!-- Key outcomes -->
+      <div style="background:#fff;border:1px solid var(--border);border-radius:24px;padding:28px 28px 22px">
+        <div style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--teal-d);margin-bottom:18px">Lo que vas a lograr 💜</div>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div style="display:flex;align-items:center;gap:12px">
+            <div style="width:32px;height:32px;border-radius:10px;background:var(--teal-pale);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:15px">🔥</div>
+            <span style="font-size:14px;color:var(--mid);line-height:1.4">Reducir la <strong style="color:var(--dark)">inflamación</strong> intestinal y sistémica desde la raíz</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px">
+            <div style="width:32px;height:32px;border-radius:10px;background:var(--lila-pale);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:15px">⚡</div>
+            <span style="font-size:14px;color:var(--mid);line-height:1.4">Recuperar tu <strong style="color:var(--dark)">energía real</strong> — sin depender del café</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px">
+            <div style="width:32px;height:32px;border-radius:10px;background:var(--teal-pale);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:15px">😴</div>
+            <span style="font-size:14px;color:var(--mid);line-height:1.4">Dormir bien y despertar <strong style="color:var(--dark)">descansada</strong> de verdad</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px">
+            <div style="width:32px;height:32px;border-radius:10px;background:var(--lila-pale);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:15px">🧘</div>
+            <span style="font-size:14px;color:var(--mid);line-height:1.4">Manejar el <strong style="color:var(--dark)">estrés</strong> sin que se acumule en tu cuerpo</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px">
+            <div style="width:32px;height:32px;border-radius:10px;background:var(--teal-pale);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:15px">🫶</div>
+            <span style="font-size:14px;color:var(--mid);line-height:1.4">Construir una relación con la comida <strong style="color:var(--dark)">sin culpa</strong></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- For who quick pills -->
+      <div style="background:var(--warm);border-radius:20px;padding:22px 24px;border:1px solid var(--border)">
+        <div style="font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--lila-d);margin-bottom:14px">Para ti si eres...</div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px">
+          <span style="background:#fff;border:1px solid var(--border);border-radius:50px;padding:6px 14px;font-size:12.5px;color:var(--mid)">👩‍💼 Profesional o emprendedora</span>
+          <span style="background:#fff;border:1px solid var(--border);border-radius:50px;padding:6px 14px;font-size:12.5px;color:var(--mid)">😮‍💨 Siempre inflamada</span>
+          <span style="background:#fff;border:1px solid var(--border);border-radius:50px;padding:6px 14px;font-size:12.5px;color:var(--mid)">😓 Cansada sin razón</span>
+          <span style="background:#fff;border:1px solid var(--border);border-radius:50px;padding:6px 14px;font-size:12.5px;color:var(--mid)">🔍 Buscando respuestas reales</span>
+          <span style="background:#fff;border:1px solid var(--border);border-radius:50px;padding:6px 14px;font-size:12.5px;color:var(--mid)">💆 Lista para el cambio</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-inner">
+    <span class="marquee-item">Nutrición antiinflamatoria</span><span class="marquee-dot">✦</span>
+    <span class="marquee-item">Movimiento consciente</span><span class="marquee-dot">✦</span>
+    <span class="marquee-item">Salud mental integrada</span><span class="marquee-dot">✦</span>
+    <span class="marquee-item">Acompañamiento real</span><span class="marquee-dot">✦</span>
+    <span class="marquee-item">Sin dietas restrictivas</span><span class="marquee-dot">✦</span>
+    <span class="marquee-item">Sesiones 1:1 con Kathe</span><span class="marquee-dot">✦</span>
+    <span class="marquee-item">Hábitos que se quedan</span><span class="marquee-dot">✦</span>
+    <span class="marquee-item">Nutrición antiinflamatoria</span><span class="marquee-dot">✦</span>
+    <span class="marquee-item">Movimiento consciente</span><span class="marquee-dot">✦</span>
+    <span class="marquee-item">Salud mental integrada</span><span class="marquee-dot">✦</span>
+    <span class="marquee-item">Acompañamiento real</span><span class="marquee-dot">✦</span>
+    <span class="marquee-item">Sin dietas restrictivas</span><span class="marquee-dot">✦</span>
+    <span class="marquee-item">Sesiones 1:1 con Kathe</span><span class="marquee-dot">✦</span>
+    <span class="marquee-item">Hábitos que se quedan</span><span class="marquee-dot">✦</span>
+  </div>
+</div>
+
+
+<!-- VSL -->
+<div class="vsl-section fade">
+  <div class="vsl-inner">
+    <div class="vsl-label">
+      <span class="vsl-dot"></span>
+      Mira este video antes de continuar
+    </div>
+    <h2 class="vsl-title">Todo lo que necesitas saber<br>sobre <em>Ligera-Mente</em></h2>
+    <div class="vsl-frame-wrap">
+      <div class="vsl-frame-glow"></div>
+      <div class="vsl-frame" id="vsl-player" onclick="playVSL()">
+        <img src="https://img.youtube.com/vi/fTlObgfFTCo/maxresdefault.jpg" alt="Ligera-Mente — Kathe Fruto" onerror="this.src='https://img.youtube.com/vi/fTlObgfFTCo/hqdefault.jpg'">
+        <div class="vsl-play-btn">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
+        </div>
+        <div class="vsl-duration">▶ Ver video</div>
+      </div>
+    </div>
+    <p class="vsl-sub">Despues de ver el video, desplazate hacia abajo para conocer los planes 💜</p>
+  </div>
+</div>
+
+<!-- PAIN -->
+<div class="sec-full fade" style="background:var(--cream)">
+  <div class="sec-full-in">
+    <div class="tag tag-lila">¿Te identificas?</div>
+    <h2 class="st">Si algo de esto te suena,<br>este programa es para <em>ti</em></h2>
+    <div class="pain-grid">
+      <div class="pain-card"><span class="pain-emoji">🔥</span><h3>Esa barriga que no desaparece</h3><p>Gases, distensión, pesadez después de comer. Ya no sabes qué te hace mal.</p></div>
+      <div class="pain-card"><span class="pain-emoji">😴</span><h3>Te despiertas cansada aunque hayas dormido</h3><p>Esa energía que nunca termina de llegar. El café ya no alcanza.</p></div>
+      <div class="pain-card"><span class="pain-emoji">🤯</span><h3>Confusión total con lo que debes comer</h3><p>Tanta información contradictoria. Una semana el gluten, otra el azúcar.</p></div>
+      <div class="pain-card"><span class="pain-emoji">💭</span><h3>Tu cuerpo y tu mente van en direcciones opuestas</h3><p>El estrés te come por dentro y lo sientes físicamente. La cabeza no para.</p></div>
+      <div class="pain-card"><span class="pain-emoji">🔁</span><h3>Probaste de todo y los cambios no se quedan</h3><p>Dietas, suplementos, consultas. Algo mejora y vuelve. Sin continuidad.</p></div>
+      <div class="pain-card"><span class="pain-emoji">🫀</span><h3>Quieres sentirte bien en tu cuerpo, no pelearte</h3><p>No buscas un número en la báscula. Buscas energía real y digestión tranquila.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- PROMISE -->
+<div class="sec fade">
+  <div class="promise">
+    <div class="tag">La promesa de Ligera-Mente</div>
+    <h2>Al terminar este proceso te sentirás<br><strong>más ligera por dentro y por fuera</strong></h2>
+    <p>Con una digestión que trabaja para ti, energía constante, un sistema nervioso más calmado y hábitos que se quedan porque los construiste tú — a tu ritmo, con acompañamiento real.</p>
+  </div>
+</div>
+
+<!-- FOR WHO -->
+<div class="sec-full fade" id="quien" style="background:var(--warm)">
+  <div class="sec-full-in">
+    <div class="forwho-grid">
+      <div class="symptom-wrap">
+        <h3>¿Reconoces alguno de estos síntomas?</h3>
+        <ul class="symp-list">
+          <li><div class="sdot"></div>Inflamación abdominal constante o después de comer</li>
+          <li><div class="sdot"></div>Fatiga crónica sin causa aparente</li>
+          <li><div class="sdot"></div>Piel opaca, retención de líquidos, pesadez general</li>
+          <li><div class="sdot"></div>Sueño que no repara — te levantas igual de cansada</li>
+          <li><div class="sdot"></div>Ansiedad por la comida o relación conflictiva con comer</li>
+          <li><div class="sdot"></div>Estrés elevado que sientes físicamente en el cuerpo</li>
+          <li><div class="sdot"></div>Ciclo menstrual con mucha inflamación premenstrual</li>
+          <li><div class="sdot"></div>Digestión lenta, gases, irregularidad intestinal</li>
+        </ul>
+      </div>
+      <div class="forwho-text">
+        <div class="tag">Para quién es</div>
+        <h2 class="st">Mujeres que saben que<br>algo no está <em>bien</em></h2>
+        <p>Eres profesional, emprendedora o tienes una vida activa. Has buscado respuestas — médicos, dietas, suplementos. Algo mejora, pero no se sostiene. <strong>El problema es que nadie te ha acompañado de forma integral.</strong></p>
+        <p>La inflamación no es solo lo que comes. Es también cómo duermes, cómo manejas el estrés y qué tan conectada estás con tu cuerpo. <strong>Ligera-Mente trabaja todo eso, juntas.</strong></p>
+        <a href="#planes" class="btn-p" style="margin-top:10px;display:inline-flex">Sí, esto es lo que busco ✦</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PILLARS -->
+<div class="sec fade" id="programa">
+  <div class="tag">Los tres pilares</div>
+  <h2 class="st">Un enfoque completo porque la<br>inflamación tiene <em>muchas raíces</em></h2>
+  <p class="lead">La mayoría de programas solo trabajan la alimentación. Aquí los tres pilares trabajan juntos desde el primer día.</p>
+  <div class="pillars">
+    <div class="pillar p1"><div class="pillar-bg">01</div><div class="pillar-icon">🥗</div><h3>Nutrición antiinflamatoria consciente</h3><p>Sin restricción, sin reglas absurdas. Un plan personalizado que se adapta a ti, a tus gustos y a tu vida.</p><ul><li>Plan nutricional personalizado en app</li><li>Lista de compras semanal + equivalentes</li><li>Protocolo de reducción de azúcar procesada</li><li>Recetas funcionales adaptadas a ti</li><li>Guía de etiquetado nutricional</li></ul></div>
+    <div class="pillar p2"><div class="pillar-bg">02</div><div class="pillar-icon">🧘</div><h3>Movimiento consciente digestivo</h3><p>No es deporte. Es movimiento que activa tu digestión, regula el cortisol y baja la inflamación.</p><ul><li>Yoga digestivo y restaurativo</li><li>Rutinas para casa, gym o aire libre</li><li>Caminatas y activación diaria</li><li>Movimiento según tu fase hormonal</li><li>Respiración parasimpática</li></ul></div>
+    <div class="pillar p3"><div class="pillar-bg">03</div><div class="pillar-icon">🧠</div><h3>Salud mental, estrés y hábitos</h3><p>El 80% de la inflamación tiene raíz emocional. Este pilar es el más transformador de todos.</p><ul><li>Meditaciones guiadas por objetivo</li><li>Journaling semanal guiado</li><li>Regulación del sistema nervioso</li><li>Trabajo de creencias sobre el cuerpo</li><li>Rituales de descanso y sueño</li></ul></div>
+  </div>
+</div>
+
+<!-- WEEKS -->
+<div class="sec-full fade" style="background:var(--warm)">
+  <div class="sec-full-in">
+    <div class="tag">El camino</div>
+    <h2 class="st">12 semanas de transformación<br><em>real y profunda</em></h2>
+    <p class="lead">Cada semana tiene su tema, su foco y sus herramientas. Nada es al azar.</p>
+    <div class="weeks-grid">
+      <div class="wk"><div class="wk-num">Semana 0</div><h4>Preparación y bienvenida</h4><p>Sesión diagnóstica. Plan listo. Todo configurado para ti.</p></div>
+      <div class="wk"><div class="wk-num">Semana 1</div><h4>Reconexión con tu centro</h4><p>Escuchar al cuerpo. Bitácora digestiva. Conciencia corporal.</p></div>
+      <div class="wk"><div class="wk-num">Semana 2</div><h4>Alimentar la calma</h4><p>Primeros cambios antiinflamatorios. Alimentos funcionales.</p></div>
+      <div class="wk"><div class="wk-num">Semana 3</div><h4>Calmar el fuego interno</h4><p>Sistema nervioso y digestión. Cortisol. Respiración.</p></div>
+      <div class="wk"><div class="wk-num">Semana 4</div><h4>El arte de nutrirte</h4><p>Mindful eating. Reducción de azúcar. Lectura de etiquetas.</p></div>
+      <div class="wk"><div class="wk-num">Semana 5</div><h4>Mover para soltar</h4><p>Movimiento como herramienta digestiva. Fibra. Hidratación.</p></div>
+      <div class="wk"><div class="wk-num">Semana 6</div><h4>Liberar lo que pesa</h4><p>Creencias que inflaman. Trabajo emocional. Antioxidantes.</p></div>
+      <div class="wk"><div class="wk-num">Semana 7</div><h4>Descanso y reparación</h4><p>Sueño como antiinflamatorio. Protocolo nocturno.</p></div>
+      <div class="wk"><div class="wk-num">Semana 8</div><h4>Integrar y consolidar</h4><p>Lo que ya cambió en ti. Neuroplasticidad. Identidad.</p></div>
+      <div class="wk"><div class="wk-num">Semana 9</div><h4>Microbiota profunda</h4><p>Restaurar el ecosistema intestinal. Fermentados.</p></div>
+      <div class="wk"><div class="wk-num">Semana 10</div><h4>Ciclo hormonal</h4><p>Las 4 fases como aliadas. Alimentación según ciclo.</p></div>
+      <div class="wk wk-plus"><div class="wk-num" style="color:var(--lila-d)">Semanas 11–12</div><h4>Sostenibilidad y cierre</h4><p>Tu protocolo personal. Plan de vida. Carta al futuro.</p></div>
+    </div>
+    <p style="margin-top:22px;font-size:13px;color:var(--light);text-align:center">El plan semestral incluye 12 semanas adicionales de profundización: inflamación sistémica avanzada, depuración, eje intestino-piel y hormonas 💜</p>
+  </div>
+</div>
+
+<!-- INCLUDES -->
+<div class="sec fade">
+  <div class="tag">¿Qué incluye?</div>
+  <h2 class="st">Todo lo que necesitas<br>en un solo <em>lugar</em></h2>
+  <div class="inc-wrap" style="margin-top:40px">
+    <ul class="inc-list">
+      <li class="inc-li"><div class="inc-ico">📋</div><div class="inc-tx"><strong>Sesión diagnóstica de bienvenida (60 min)</strong><span>Tu historia completa. Tus síntomas. Tus objetivos. Todo personalizado desde el día 1.</span></div></li>
+      <li class="inc-li"><div class="inc-ico">🥗</div><div class="inc-tx"><strong>Plan nutricional antiinflamatorio en app</strong><span>Activo durante todo el proceso. Con lista de compras, equivalentes y recetas funcionales para ti.</span></div></li>
+      <li class="inc-li"><div class="inc-ico">🤝</div><div class="inc-tx"><strong>Sesiones 1:1 quincenales con Kathe</strong><span>Coaching personalizado para revisar, ajustar y profundizar. Sin plantillas genéricas.</span></div></li>
+      <li class="inc-li"><div class="inc-ico">📲</div><div class="inc-tx"><strong>Acompañamiento por WhatsApp</strong><span>Check-in semanal + revisión de comidas con feedback real. Nunca estarás sola en el proceso.</span></div></li>
+      <li class="inc-li"><div class="inc-ico">🎧</div><div class="inc-tx"><strong>Biblioteca de meditaciones guiadas</strong><span>Sueño, estrés, energía, digestión, autocompasión. Audios creados por Kathe para cada momento.</span></div></li>
+      <li class="inc-li"><div class="inc-ico">📓</div><div class="inc-tx"><strong>Journaling semanal guiado</strong><span>Preguntas que llevan a la raíz. Reflexión como herramienta de transformación real.</span></div></li>
+      <li class="inc-li"><div class="inc-ico">👯</div><div class="inc-tx"><strong>Comunidad privada de mujeres en WhatsApp</strong><span>Apoyo, motivación y conexión real con otras en el mismo proceso.</span></div></li>
+    </ul>
+    <div class="bonus-box">
+      <h3>+ Los 3 bonus incluidos 💜</h3>
+      <div class="bns"><div class="bns-badge">Bonus 1</div><div><strong>Guía de suplementación personalizada</strong><span>PDF con los 4-5 suplementos priorizados para tu perfil específico de síntomas. No genérico — tuyo.</span></div></div>
+      <div class="bns"><div class="bns-badge">Bonus 2</div><div><strong>Revisión de comidas con feedback</strong><span>Mandas foto, recibes feedback cálido y educativo. Así se construye consciencia alimentaria real.</span></div></div>
+      <div class="bns"><div class="bns-badge">Bonus 3</div><div><strong>Guía de marcas recomendadas</strong><span>Las marcas que Kathe usa, conoce y recomienda. Supermercado, naturistas y marcas locales.</span></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- QUOTE -->
+<div class="quote-sec fade">
+  <div class="quote-in">
+    <div class="q-marks">"</div>
+    <p class="big-q">No es una dieta ni un reto de 30 días. Es el acompañamiento real que siempre buscaste y nunca encontraste en un solo lugar. <em>Ese es Ligera-Mente.</em></p>
+    <p class="q-author">— Kathe Fruto · Health Coach & Coach de Nutrición</p>
+  </div>
+</div>
+
+<!-- KATHE -->
+<div class="kathe-sec fade">
+  <div class="kathe-in">
+    <div class="kathe-photo">
+      <img src="https://i.ibb.co/4ZwRkcy4/DSC06988.jpg" alt="Kathe Fruto — Health Coach">
+    </div>
+    <div class="kathe-content">
+      <div class="tag">Quién está detrás</div>
+      <h2>Soy Kathe Fruto</h2>
+      <span class="role">Health Coach & Coach de Nutrición</span>
+      <p>Con más de 3 años de práctica y formación en health coaching en España (máster 2022) + diplomado en nutrición (2021), acompaño a mujeres que quieren sentirse bien en su cuerpo — no perseguir un número en la báscula.</p>
+      <p>Mi enfoque es siempre holístico: nutrición, movimiento y salud mental como un todo. Antes de esto, pasé más de 15 años en el mundo corporativo. Sé lo que es vivir con el sistema nervioso al máximo. Y sé lo que es transformar eso desde adentro.</p>
+      <p><strong style="color:var(--dark)">En Ligera-Mente no eres una clienta más — eres una mujer con una historia específica que merece un acompañamiento específico.</strong></p>
+      <div class="kathe-tags">
+        <div class="ktag">Health Coach certificada</div>
+        <div class="ktag">Coach de Nutrición</div>
+        <div class="ktag">Máster España 2022</div>
+        <div class="ktag">+15 años mundo corporativo</div>
+        <div class="ktag">Enfoque holístico</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PRICING -->
+<div class="pricing-sec fade" id="planes">
+  <div class="pricing-in">
+    <div style="text-align:center;margin-bottom:10px">
+      <div class="tag" style="justify-content:center">Elige tu proceso</div>
+      <h2 class="st" style="max-width:600px;margin:0 auto 12px;text-align:center">El plan que se adapta<br>a tu <em>momento</em></h2>
+      <p style="font-size:15px;color:var(--mid);max-width:520px;margin:0 auto;line-height:1.8">A mayor duración, mayor profundidad y mayor ahorro. El pago único siempre tiene descuento.</p>
+    </div>
+    <div class="plans-grid">
+
+      <!-- 2 MESES -->
+      <div class="plan">
+        <div class="plan-name">Ligera-Mente</div>
+        <div class="plan-dur">2 meses · 8 semanas</div>
+        <div class="plan-ses">✦ 4 sesiones 1:1 con Kathe</div>
+        <div class="plan-divider"></div>
+        <div class="price-block-u">
+          <div class="price-label">Pago único — mejor precio</div>
+          <div class="price-main">$410.000</div>
+          <div class="price-note">COP · un solo pago, sin recargo</div>
+        </div>
+        <a href="https://checkout.nequi.wompi.co/l/EX4fAa" target="_blank" class="cta-u">Pagar $410.000 único ✦</a>
+        <div class="price-block-c">
+          <div class="price-label-c">O en 2 cuotas cómodas</div>
+          <div class="price-main-c">$230.000 × 2</div>
+          <div class="price-note" style="color:var(--mid)">COP · débito automático mensual</div>
+        </div>
+        <a href="https://www.mercadopago.com.co/subscriptions/checkout?preapproval_plan_id=8fdd790316e748b6b31f21da94f8ff65" target="_blank" class="cta-c">Pagar en 2 cuotas</a>
+        <ul class="plan-feats">
+          <li>Sesión diagnóstica de bienvenida (60 min)</li>
+          <li>Plan nutricional antiinflamatorio en app</li>
+          <li>Plan de movimiento personalizado: casa, gym o aire libre</li>
+          <li>4 sesiones de coaching 1:1 quincenales</li>
+          <li>Check-in semanal por WhatsApp</li>
+          <li>Revisión de comidas 2x semana</li>
+          <li>Meditaciones guiadas + journaling</li>
+          <li>Comunidad privada en WhatsApp</li>
+          <li>3 Bonus incluidos</li>
+        </ul>
+      </div>
+
+      <!-- 3 MESES -->
+      <div class="plan plan-pop">
+        <div class="pop-badge">Más popular 💜</div>
+        <div class="plan-name">Ligera-Mente</div>
+        <div class="plan-dur">3 meses · 12 semanas</div>
+        <div class="plan-ses">✦ 6 sesiones 1:1 con Kathe</div>
+        <div class="plan-divider"></div>
+        <div class="price-block-u">
+          <div class="price-label">Pago único — mejor precio</div>
+          <div class="price-main">$580.000</div>
+          <div class="price-note">COP · un solo pago, sin recargo</div>
+        </div>
+        <a href="https://checkout.nequi.wompi.co/l/qLGpHT" target="_blank" class="cta-u">Pagar $580.000 único ✦</a>
+        <div class="price-block-c">
+          <div class="price-label-c">O en 2 cuotas cómodas</div>
+          <div class="price-main-c">$312.500 × 2</div>
+          <div class="price-note" style="color:var(--mid)">COP · débito automático mensual</div>
+        </div>
+        <a href="https://www.mercadopago.com.co/subscriptions/checkout?preapproval_plan_id=68af3483508d46929d7e86c4a6251eab" target="_blank" class="cta-c">Pagar en 2 cuotas</a>
+        <ul class="plan-feats">
+          <li>Todo lo del plan 2 meses</li>
+          <li>Plan de movimiento actualizado según tu evolución</li>
+          <li>4 semanas adicionales: microbiota, ciclo hormonal, sostenibilidad</li>
+          <li>6 sesiones 1:1 quincenales</li>
+          <li>Resumen de cierre personalizado</li>
+          <li>Plan de sostenimiento (semana 12)</li>
+          <li>Prioridad WhatsApp (máx. 12h)</li>
+        </ul>
+      </div>
+
+      <!-- 6 MESES -->
+      <div class="plan">
+        <div class="plan-name">Ligera-Mente Profundo</div>
+        <div class="plan-dur">6 meses · 24 semanas</div>
+        <div class="plan-ses">✦ 12 sesiones 1:1 con Kathe</div>
+        <div class="plan-divider"></div>
+        <div class="price-block-u">
+          <div class="price-label">Pago único — mejor precio</div>
+          <div class="price-main">$1.080.000</div>
+          <div class="price-note">COP · un solo pago, sin recargo</div>
+        </div>
+        <a href="https://checkout.nequi.wompi.co/l/u0jrhh" target="_blank" class="cta-u">Pagar $1.080.000 único ✦</a>
+        <div class="price-block-c">
+          <div class="price-label-c">O en 4 cuotas cómodas</div>
+          <div class="price-main-c">$299.000 × 4</div>
+          <div class="price-note" style="color:var(--mid)">COP · débito automático mensual</div>
+        </div>
+        <a href="https://www.mercadopago.com.co/subscriptions/checkout?preapproval_plan_id=50abd452baf94c2eb657a838a804f76c" target="_blank" class="cta-c">Pagar en 4 cuotas</a>
+        <ul class="plan-feats">
+          <li>Todo lo del plan 3 meses</li>
+          <li>Plan de movimiento avanzado y reajustado cada fase</li>
+          <li>12 semanas de profundización avanzada</li>
+          <li>12 sesiones 1:1 quincenales</li>
+          <li>Revisión de comidas ilimitada</li>
+          <li>Actualización de suplementación mes 3</li>
+          <li>Guías avanzadas: microbiota y hormonas</li>
+          <li>Sesión de cierre 75 min + plan de vida</li>
+        </ul>
+      </div>
+
+    </div>
+    <p style="text-align:center;margin-top:32px;font-size:14px;color:var(--light)">¿Dudas sobre qué plan es para ti? <a href="https://wa.link/1joa1t" target="_blank" style="color:var(--teal-d);text-decoration:none;border-bottom:1px solid var(--teal)">Escríbeme por WhatsApp</a> y lo definimos juntas 💜</p>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="sec fade">
+  <div class="faq-in">
+    <div class="tag">Preguntas frecuentes</div>
+    <h2 class="st" style="margin-bottom:36px">Lo que siempre<br>quieren <em>saber</em></h2>
+    <div id="faq">
+      <div class="faq-item"><div class="faq-q">¿Necesito tener un diagnóstico médico de problema digestivo?<div class="faq-icon">+</div></div><div class="faq-a">No. Ligera-Mente trabaja desde el estilo de vida y la prevención. Si tienes síntomas que te molestan sin diagnóstico claro, eso es exactamente para lo que fue diseñado este programa. La inflamación crónica de bajo grado muchas veces no aparece en exámenes — pero sí la sientes.</div></div>
+      <div class="faq-item"><div class="faq-q">¿Es una dieta restrictiva? ¿Voy a pasar hambre?<div class="faq-icon">+</div></div><div class="faq-a">Para nada. Ligera-Mente es nutrición antiinflamatoria consciente — no restrictiva. El plan se personaliza para ti, con los alimentos que te gustan, adaptado a tu contexto. El objetivo es que comas mejor y con más consciencia, no que comas menos.</div></div>
+      <div class="faq-item"><div class="faq-q">¿Cuánto tiempo al día necesito dedicarle?<div class="faq-icon">+</div></div><div class="faq-a">El programa está diseñado para integrarse a tu vida, no para que reorganices tu vida alrededor de él. Con 20-30 minutos diarios bien usados es suficiente para empezar. Las sesiones 1:1 con Kathe son quincenales y duran 30-45 minutos.</div></div>
+      <div class="faq-item"><div class="faq-q">¿Funciona si vivo fuera de Colombia?<div class="faq-icon">+</div></div><div class="faq-a">Sí, el programa es 100% virtual. Las sesiones son por Meet, la comunidad es por WhatsApp y la app nutricional funciona desde cualquier lugar del mundo. Solo necesitas conexión a internet.</div></div>
+      <div class="faq-item"><div class="faq-q">¿Qué diferencia hay entre el pago único y las cuotas?<div class="faq-icon">+</div></div><div class="faq-a">El programa tiene exactamente los mismos beneficios en ambas modalidades. Las cuotas tienen un pequeño recargo porque el pago único siempre es el que más te cuida económicamente. Plan 2 meses: 2 cuotas de $230.000. Plan 3 meses: 2 cuotas de $312.500. Plan 6 meses: 4 cuotas de $299.000.</div></div>
+      <div class="faq-item"><div class="faq-q">¿Puedo cambiar de plan durante el proceso?<div class="faq-icon">+</div></div><div class="faq-a">Sí. Muchas chicas empiezan con el plan bimestral o trimestral y deciden continuar. Si quieres subir de plan, lo conversamos en tu sesión de cierre y definimos juntas cómo continuar el proceso.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- FINAL CTA -->
+<div class="final-sec fade" style="background:var(--warm)">
+  <h2>¿Lista para sentirte<br><em>verdaderamente bien?</em></h2>
+  <p>El proceso empieza en el momento en que decides que sí. Tu cuerpo lleva tiempo pidiéndote esto.</p>
+  <div class="final-btns">
+    <a href="#planes" class="btn-p">Ver planes y unirme ✦</a>
+    <a href="https://wa.link/1joa1t" target="_blank" class="wa-btn">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z" fill="currentColor"/></svg>
+      Tengo preguntas — WhatsApp
+    </a>
+  </div>
+  <p class="footer-note">Kathe responde personalmente 💜</p>
+</div>
+
+<div class="div-line"></div>
+
+<footer>
+  <p><strong>Kathe Fruto</strong> — Health Coach & Coach de Nutrición</p>
+  <p>Ligera-Mente · 100% virtual · 2025 💜</p>
+</footer>
+
+<script>
+function playVSL(){
+  var p = document.getElementById('vsl-player');
+  p.innerHTML = '<iframe src="https://www.youtube.com/embed/fTlObgfFTCo?autoplay=1&rel=0&modestbranding=1&color=white" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width:100%;height:100%;display:block;position:absolute;top:0;left:0"></iframe>';
+  p.style.cursor = 'default';
+}
+
+const obs = new IntersectionObserver(es => {
+  es.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
+}, { threshold: 0.08 });
+document.querySelectorAll('.fade').forEach(el => obs.observe(el));
+
+document.querySelectorAll('.faq-item').forEach(item => {
+  item.addEventListener('click', () => {
+    const open = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!open) item.classList.add('open');
+  });
+});
+</script>
+</body>
+</html>
