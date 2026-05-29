@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Elijo Cuidarme — Programa 30 días | Kathe Fruto Health Coach</title>
+<meta name="description" content="Un programa de 30 días para crear hábitos de bienestar sostenibles. Nutrición personalizada, movimiento consciente y acompañamiento real."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  /* Paleta principal extraída del logo */
+  --lila:       #B89BC8;   /* lila suave — color protagonista */
+  --lila-dk:    #7B5EA7;   /* lila oscuro */
+  --lila-deep:  #4A3B5C;   /* lila profundo texto */
+  --lila-soft:  #EDE8F5;   /* lila muy suave fondos */
+  --lila-pale:  #F5F0FB;   /* lila casi blanco */
+  --lila-mid:   #C4AEE0;   /* lila medio bordes */
+  --teal:       #7BBFB5;   /* teal logo */
+  --teal-dk:    #3D7E78;
+  --teal-soft:  #E8F6F4;
+  --cream:      #FDFBFF;
+  --text:       #2E1F3E;
+  --muted:      #7A6B8A;
+  --border:     rgba(184,155,200,.22);
+  --shadow:     0 8px 40px rgba(123,94,167,.13);
+  --r:          14px;
+  --r-lg:       22px;
+  --S: 'Cormorant Garamond', Georgia, serif;
+  --R: 'Raleway', sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--R);background:var(--cream);color:var(--text);overflow-x:hidden;line-height:1.7}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes pulse{0%{transform:scale(1);opacity:.5}100%{transform:scale(1.8);opacity:0}}
+@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.au{animation:fadeUp .8s ease both}
+.au1{animation-delay:.1s}.au2{animation-delay:.25s}.au3{animation-delay:.4s}.au4{animation-delay:.55s}.au5{animation-delay:.7s}
+
+/* ── LAYOUT ── */
+.w{max-width:880px;margin:0 auto;padding:0 24px}
+.lbl{font-family:var(--R);font-weight:700;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--lila-dk)}
+
+/* ── TOPBAR ── */
+.topbar{background:var(--lila);color:#fff;text-align:center;padding:10px 20px;font-size:12.5px;font-weight:600;letter-spacing:.03em;display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap}
+.topbar span{opacity:.85}
+.topbar b{opacity:1;font-weight:800}
+.topbar-sep{width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,.6)}
+
+/* ── NAV ── */
+nav{background:rgba(253,251,255,.97);backdrop-filter:blur(16px);border-bottom:1.5px solid var(--lila-soft);position:sticky;top:0;z-index:100;padding:11px 28px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.nav-brand{display:flex;align-items:center;gap:10px}
+.nav-logo-img{height:54px;width:auto;object-fit:contain}
+.nav-brand-text{display:flex;flex-direction:column;line-height:1.2}
+.nav-name{font-family:var(--S);font-size:21px;color:var(--lila);font-weight:400}
+.nav-sub{font-size:10px;color:var(--muted);letter-spacing:.14em;text-transform:uppercase;font-weight:700}
+.nav-btn{background:var(--lila);color:#fff;padding:10px 24px;border-radius:50px;font-size:13px;font-weight:700;letter-spacing:.02em;transition:all .2s;white-space:nowrap;box-shadow:0 4px 18px rgba(184,155,200,.45)}
+.nav-btn:hover{background:var(--lila-dk);transform:translateY(-1px);box-shadow:0 8px 26px rgba(123,94,167,.45)}
+
+/* ── BUTTONS ── */
+.btn-p{display:inline-flex;align-items:center;gap:9px;background:var(--lila);color:#fff;padding:16px 32px;border-radius:50px;font-weight:700;font-size:15px;letter-spacing:.02em;transition:all .25s;box-shadow:0 6px 24px rgba(184,155,200,.45);cursor:pointer;border:none}
+.btn-p:hover{background:var(--lila-dk);transform:translateY(-2px);box-shadow:0 12px 36px rgba(123,94,167,.5)}
+.btn-wa{display:inline-flex;align-items:center;gap:9px;background:linear-gradient(135deg,#1FA855,#25D366);color:#fff;padding:16px 32px;border-radius:50px;font-weight:700;font-size:15px;transition:all .25s;box-shadow:0 6px 24px rgba(37,211,102,.3);cursor:pointer}
+.btn-wa:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(37,211,102,.45)}
+.btn-ghost{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--lila-dk);padding:14px 28px;border-radius:50px;font-weight:600;font-size:14px;border:1.5px solid var(--lila-mid);transition:all .2s}
+.btn-ghost:hover{background:var(--lila-soft)}
+
+/* ══ HERO ══ */
+.hero{position:relative;overflow:hidden;min-height:94vh;display:flex;align-items:center;background:linear-gradient(145deg,#F0E8F8 0%,#FDFBFF 45%,#EBF7F5 100%)}
+.hero-bg1{position:absolute;top:-160px;right:-160px;width:560px;height:560px;border-radius:50%;background:radial-gradient(circle,rgba(184,155,200,.18) 0%,transparent 70%);pointer-events:none;animation:float 10s ease-in-out infinite}
+.hero-bg2{position:absolute;bottom:-120px;left:-100px;width:440px;height:440px;border-radius:50%;background:radial-gradient(circle,rgba(123,191,181,.14) 0%,transparent 70%);pointer-events:none;animation:float 8s ease-in-out infinite;animation-delay:3s}
+.hero-dots{position:absolute;inset:0;background-image:radial-gradient(circle,rgba(184,155,200,.07) 1.5px,transparent 1.5px);background-size:36px 36px;pointer-events:none}
+.hero-inner{position:relative;z-index:1;display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center;max-width:980px;margin:0 auto;padding:88px 24px 80px}
+
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1.5px solid var(--lila-mid);color:var(--lila-dk);padding:7px 18px;border-radius:50px;margin-bottom:24px;box-shadow:0 3px 14px rgba(184,155,200,.22)}
+.hero-badge .dot{width:7px;height:7px;border-radius:50%;background:var(--teal);position:relative;flex-shrink:0}
+.hero-badge .dot::after{content:'';position:absolute;inset:-4px;border-radius:50%;background:var(--teal);animation:pulse 1.8s ease infinite}
+.hero h1{font-family:var(--S);font-size:clamp(38px,5.5vw,64px);font-weight:600;color:var(--lila-deep);line-height:1.09;margin-bottom:18px}
+.hero h1 em{color:var(--lila);font-style:italic}
+.hero-sub{font-size:16px;color:var(--muted);margin-bottom:28px;line-height:1.8;max-width:460px}
+.hero-quote{background:#fff;border:1px solid var(--lila-mid);border-left:4px solid var(--lila);border-radius:0 var(--r) var(--r) 0;padding:16px 20px;margin-bottom:32px;font-family:var(--S);font-size:18px;color:var(--lila-deep);font-style:italic;line-height:1.5;box-shadow:0 4px 16px rgba(184,155,200,.12)}
+.hero-btns{display:flex;flex-direction:column;gap:12px;align-items:flex-start}
+.hero-trust{display:flex;align-items:center;gap:18px;margin-top:18px;flex-wrap:wrap}
+.ti{font-size:12px;color:var(--muted);font-weight:600;display:flex;align-items:center;gap:5px}
+.ti::before{content:'✓';color:var(--teal-dk);font-weight:700}
+
+/* HERO VISUAL */
+.hero-visual{display:flex;flex-direction:column;gap:12px;animation:fadeUp .8s ease .3s both}
+.hcard{background:#fff;border:1.5px solid var(--lila-soft);border-radius:var(--r-lg);padding:18px 20px;box-shadow:0 4px 20px rgba(184,155,200,.1);transition:all .3s}
+.hcard:hover{border-color:var(--lila-mid);box-shadow:0 8px 32px rgba(184,155,200,.2);transform:translateY(-2px)}
+.hcard-top{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.hcard-ico{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0}
+.hcard-title{font-weight:700;font-size:13px;color:var(--lila-deep)}
+.hcard-sub{font-size:11.5px;color:var(--muted)}
+.hprog{height:6px;background:var(--lila-soft);border-radius:10px;overflow:hidden}
+.hprog-bar{height:100%;border-radius:10px;background:linear-gradient(90deg,var(--lila),var(--teal));width:0;transition:width 1.4s ease}
+.hprog-row{display:flex;justify-content:space-between;margin-top:5px}
+.hprog-lbl{font-size:11px;color:var(--muted)}
+.hprog-val{font-size:11px;font-weight:700;color:var(--lila-dk)}
+.hstats{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.hstat{background:var(--lila-pale);border:1px solid var(--lila-soft);border-radius:var(--r);padding:14px;text-align:center}
+.hstat .n{font-family:var(--S);font-size:28px;color:var(--lila);line-height:1;font-weight:300}
+.hstat .l{font-size:10.5px;color:var(--muted);font-weight:600;margin-top:3px;letter-spacing:.04em}
+.htag{background:#fff;border:1.5px solid var(--lila-soft);border-radius:10px;padding:8px 14px;font-size:12px;font-weight:700;color:var(--lila-deep);display:inline-flex;align-items:center;gap:7px;box-shadow:0 3px 14px rgba(184,155,200,.15);animation:float 5s ease-in-out infinite}
+.htag.t1{animation-delay:0s;align-self:flex-end;margin-right:10px}
+.htag.t2{animation-delay:2s;align-self:flex-start;margin-left:10px}
+
+/* ══ TICKER ══ */
+.ticker{background:var(--lila);padding:12px 0;overflow:hidden}
+.ticker-inner{display:flex;white-space:nowrap;animation:ticker 30s linear infinite}
+.tick{padding:0 30px;font-size:13px;font-weight:700;color:rgba(255,255,255,.92);letter-spacing:.04em;display:flex;align-items:center;gap:12px}
+.tick::after{content:'✦';font-size:10px;opacity:.6}
+
+/* ══ PAIN — fondo lila muy suave ══ */
+.pain{background:var(--lila-pale);padding:84px 0;position:relative;overflow:hidden}
+.pain::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--lila),var(--teal),var(--lila))}
+.pain h2{font-family:var(--S);color:var(--lila-deep);font-size:clamp(26px,4vw,44px);margin-bottom:12px;line-height:1.15;font-weight:600}
+.pain-intro{color:var(--muted);font-size:16px;margin-bottom:48px;max-width:500px}
+.pain-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.pain-card{background:#fff;border:1.5px solid transparent;border-radius:var(--r);padding:22px;transition:all .25s;box-shadow:0 2px 12px rgba(184,155,200,.08)}
+.pain-card:hover{border-color:var(--lila);transform:translateY(-3px);box-shadow:0 8px 28px rgba(184,155,200,.2)}
+.p-ico{width:42px;height:42px;background:var(--lila-soft);border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:13px}
+.pain-card h4{color:var(--lila-deep);font-size:14px;font-weight:700;margin-bottom:7px}
+.pain-card p{color:var(--muted);font-size:12.5px;line-height:1.65}
+
+/* ══ VSL — fondo blanco ══ */
+.vsl{padding:84px 0;background:var(--cream);text-align:center}
+.vsl h2{font-family:var(--S);font-size:clamp(26px,4vw,46px);color:var(--lila-deep);margin-bottom:14px;font-weight:600}
+.vsl-intro{color:var(--muted);font-size:16px;max-width:500px;margin:0 auto 36px}
+.video-wrap{max-width:700px;margin:0 auto;border-radius:var(--r-lg);overflow:hidden;box-shadow:0 16px 60px rgba(184,155,200,.25);border:2px solid var(--lila-mid);aspect-ratio:16/9;background:#000}
+.video-wrap iframe{width:100%;height:100%;display:block;border:none}
+.vsl-sub{margin-top:28px;font-family:var(--S);font-size:20px;color:var(--lila);font-style:italic}
+.vsl-btns{margin-top:18px;display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
+
+/* ══ STEPS — lila pale ══ */
+.steps{padding:84px 0;background:var(--lila-pale)}
+.steps h2{font-family:var(--S);font-size:clamp(26px,4vw,46px);color:var(--lila-deep);margin-bottom:12px;font-weight:600}
+.steps-intro{color:var(--muted);font-size:16px;margin-bottom:52px;max-width:520px}
+.timeline{position:relative}
+.timeline::before{content:'';position:absolute;left:30px;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--lila) 0%,var(--teal) 100%);border-radius:2px}
+.step{display:flex;gap:26px;align-items:flex-start;margin-bottom:26px}
+.step:last-child{margin:0}
+.step-num{width:60px;height:60px;border-radius:50%;background:var(--lila-soft);border:2.5px solid var(--lila);display:flex;align-items:center;justify-content:center;flex-shrink:0;z-index:1;position:relative;transition:all .3s}
+.step:hover .step-num{background:var(--lila);border-color:var(--lila-dk)}
+.step-num span{font-family:var(--S);font-size:22px;color:var(--lila-dk);transition:color .3s}
+.step:hover .step-num span{color:#fff}
+.step-body{background:#fff;border:1.5px solid var(--lila-soft);border-radius:var(--r-lg);padding:22px 26px;flex:1;transition:all .25s;position:relative;overflow:hidden}
+.step-body::after{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(180deg,var(--lila),var(--teal));opacity:0;transition:opacity .3s}
+.step:hover .step-body{box-shadow:0 6px 24px rgba(184,155,200,.18);transform:translateX(4px)}
+.step:hover .step-body::after{opacity:1}
+.sday{display:inline-block;background:var(--teal-soft);color:var(--teal-dk);font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 11px;border-radius:20px;margin-bottom:9px}
+.step-body h3{font-family:var(--S);font-size:20px;color:var(--lila-deep);margin-bottom:8px}
+.step-body p{font-size:13.5px;color:var(--muted);line-height:1.75;margin-bottom:12px}
+.stags{display:flex;flex-wrap:wrap;gap:6px}
+.stag{background:var(--lila-soft);color:var(--lila-dk);font-size:11px;font-weight:600;padding:3px 11px;border-radius:20px}
+
+/* ══ TRANSFORM — blanco ══ */
+.tx{padding:84px 0;background:var(--cream)}
+.tx h2{font-family:var(--S);font-size:clamp(26px,4vw,44px);color:var(--lila-deep);margin-bottom:44px;font-weight:600}
+.tx-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.tx-col{border-radius:var(--r-lg);padding:28px}
+.tx-col.bf{background:#FFF5F5;border:1.5px solid #FFCCCC}
+.tx-col.af{background:var(--teal-soft);border:1.5px solid rgba(123,191,181,.4)}
+.tx-col h3{font-family:var(--S);font-size:20px;margin-bottom:18px;font-weight:400}
+.tx-col.bf h3{color:#B03030}
+.tx-col.af h3{color:var(--teal-dk)}
+.tx-item{display:flex;align-items:flex-start;gap:10px;margin-bottom:12px;font-size:13.5px;line-height:1.5}
+.tx-col.bf .tx-item{color:#7D3030}
+.tx-col.af .tx-item{color:var(--teal-dk)}
+.txb{width:20px;height:20px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;margin-top:1px}
+.bf .txb{background:rgba(176,48,48,.12);color:#B03030}
+.af .txb{background:rgba(123,191,181,.3);color:var(--teal-dk)}
+
+/* ══ PILLARS — lila pale ══ */
+.pillars{padding:84px 0;background:var(--lila-pale)}
+.pillars h2{font-family:var(--S);font-size:clamp(26px,4vw,44px);color:var(--lila-deep);margin-bottom:12px;font-weight:600}
+.pillars-intro{color:var(--muted);font-size:16px;margin-bottom:48px}
+.p3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.pcard{background:#fff;border:1.5px solid var(--lila-soft);border-radius:var(--r-lg);padding:26px;transition:all .25s;position:relative;overflow:hidden}
+.pcard::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.pcard:nth-child(1)::before{background:linear-gradient(90deg,var(--lila-dk),var(--lila))}
+.pcard:nth-child(2)::before{background:linear-gradient(90deg,var(--teal-dk),var(--teal))}
+.pcard:nth-child(3)::before{background:linear-gradient(90deg,#C080A8,#D4A0C0)}
+.pcard:hover{transform:translateY(-5px);box-shadow:0 14px 44px rgba(184,155,200,.2)}
+.p-ico2{width:48px;height:48px;border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:14px}
+.pcard:nth-child(1) .p-ico2{background:var(--lila-soft)}
+.pcard:nth-child(2) .p-ico2{background:var(--teal-soft)}
+.pcard:nth-child(3) .p-ico2{background:#FBEAF0}
+.pcard h3{font-size:16px;font-weight:700;color:var(--lila-deep);margin-bottom:9px}
+.pcard p{font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:14px}
+.pcard ul{list-style:none}
+.pcard ul li{font-size:12.5px;color:var(--text);padding:5px 0;border-bottom:1px solid var(--lila-soft);display:flex;align-items:center;gap:8px}
+.pcard ul li:last-child{border:none}
+.pcard ul li::before{content:'✓';color:var(--teal-dk);font-weight:700;font-size:11px}
+
+/* ══ INCLUDES — lila soft ══ */
+.inc-s{padding:84px 0;background:var(--lila-soft)}
+.inc-s h2{font-family:var(--S);font-size:clamp(26px,4vw,44px);color:var(--lila-deep);margin-bottom:44px;font-weight:600}
+.inc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(196px,1fr));gap:14px;margin-bottom:32px}
+.iitem{background:#fff;border:1.5px solid transparent;border-radius:var(--r);padding:20px;transition:all .25s;position:relative;overflow:hidden}
+.iitem::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2.5px;background:linear-gradient(90deg,var(--lila),var(--teal));transform:scaleX(0);transition:transform .3s;transform-origin:left}
+.iitem:hover{border-color:var(--lila-mid);transform:translateY(-3px);box-shadow:0 8px 28px rgba(184,155,200,.2)}
+.iitem:hover::after{transform:scaleX(1)}
+.iitem .ii{font-size:26px;margin-bottom:9px}
+.iitem h4{font-size:14px;font-weight:700;color:var(--lila-deep);margin-bottom:5px}
+.iitem p{font-size:12px;color:var(--muted);line-height:1.55}
+.bonus-bar{background:#fff;border:2px solid var(--lila-mid);border-radius:var(--r-lg);padding:22px 28px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-bottom:36px}
+.bonus-pill{background:var(--lila);color:#fff;padding:5px 16px;border-radius:50px;font-size:11px;font-weight:700;letter-spacing:.07em;white-space:nowrap;flex-shrink:0;box-shadow:0 3px 12px rgba(184,155,200,.45)}
+.bi{font-size:13px;font-weight:600;color:var(--lila-deep);display:flex;align-items:center;gap:6px}
+.bi::before{content:'★';color:var(--lila)}
+
+/* ══ ABOUT — lila deep background ══ */
+.about{padding:84px 0;background:var(--lila-deep);position:relative;overflow:hidden}
+.about::before{content:'';position:absolute;right:-100px;top:-100px;width:380px;height:380px;border-radius:50%;background:rgba(184,155,200,.1);pointer-events:none}
+.about::after{content:'';position:absolute;left:-80px;bottom:-80px;width:280px;height:280px;border-radius:50%;background:rgba(123,191,181,.08);pointer-events:none}
+.about-grid{display:grid;grid-template-columns:1fr 1.7fr;gap:56px;align-items:center;position:relative;z-index:1}
+.about-photo-wrap{position:relative}
+.about-img{width:100%;height:420px;object-fit:cover;object-position:top center;border-radius:var(--r-lg);box-shadow:0 24px 56px rgba(0,0,0,.25);border:2px solid rgba(255,255,255,.12)}
+.creds{position:absolute;bottom:-16px;right:-16px;background:#fff;border-radius:var(--r);padding:14px 18px;box-shadow:0 8px 28px rgba(0,0,0,.18)}
+.cred{font-size:11.5px;color:var(--lila-deep);font-weight:600;display:flex;align-items:center;gap:6px;margin-bottom:5px}
+.cred:last-child{margin:0}
+.cred::before{content:'✓';color:var(--teal-dk)}
+.about .lbl{color:var(--teal);display:block;margin-bottom:12px}
+.about h2{font-family:var(--S);color:#fff;font-size:clamp(24px,3.5vw,40px);margin-bottom:18px;font-weight:600;line-height:1.2}
+.about p{color:rgba(255,255,255,.78);font-size:14.5px;line-height:1.85;margin-bottom:14px}
+.stats{display:flex;gap:28px;margin-top:28px;flex-wrap:wrap}
+.stat .n{font-family:var(--S);font-size:38px;font-weight:300;color:var(--teal)}
+.stat .l{font-size:11px;color:rgba(255,255,255,.45);letter-spacing:.06em;text-transform:uppercase;font-weight:600}
+
+/* ══ TESTIMONIALS — blanco ══ */
+.testi{padding:84px 0;background:var(--cream)}
+.testi h2{font-family:var(--S);font-size:clamp(26px,4vw,44px);color:var(--lila-deep);margin-bottom:44px;font-weight:600}
+.t3{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:18px}
+.tcard{background:#fff;border:1.5px solid var(--lila-soft);border-radius:var(--r-lg);padding:24px;transition:all .25s;position:relative}
+.tcard:hover{transform:translateY(-4px);box-shadow:0 14px 44px rgba(184,155,200,.2);border-color:var(--lila-mid)}
+.tcard::before{content:'\201C';position:absolute;top:12px;right:18px;font-family:var(--S);font-size:80px;color:var(--lila-soft);line-height:1}
+.t-stars{color:#F5A623;font-size:13px;margin-bottom:10px}
+.t-text{font-size:13.5px;color:var(--text);line-height:1.75;margin-bottom:16px;font-style:italic}
+.t-author{display:flex;align-items:center;gap:10px}
+.tav{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;color:#fff;flex-shrink:0}
+.av1{background:linear-gradient(135deg,var(--lila-dk),var(--lila))}
+.av2{background:linear-gradient(135deg,var(--teal-dk),var(--teal))}
+.av3{background:linear-gradient(135deg,#C080A8,#D4A0C0)}
+.t-name{font-size:13px;font-weight:700;color:var(--lila-deep)}
+.t-role{font-size:11px;color:var(--muted)}
+
+/* ══ PRICING — lila soft ══ */
+.pricing{padding:84px 0;background:var(--lila-soft);text-align:center}
+.pricing h2{font-family:var(--S);font-size:clamp(26px,4vw,44px);color:var(--lila-deep);margin-bottom:12px;font-weight:600}
+.pricing-intro{color:var(--muted);font-size:16px;max-width:460px;margin:0 auto 44px}
+.pricebox{max-width:500px;margin:0 auto;background:#fff;border:2px solid var(--lila-mid);border-radius:var(--r-lg);overflow:hidden;box-shadow:0 24px 80px rgba(184,155,200,.28)}
+.pricebox-head{background:var(--lila);padding:30px 32px;text-align:center;position:relative;overflow:hidden}
+.pricebox-head::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.1) 1px,transparent 1px);background-size:20px 20px}
+.ph-name{font-family:var(--S);font-size:30px;font-style:italic;color:#fff;position:relative;margin-bottom:4px}
+.ph-sub{font-size:12px;color:rgba(255,255,255,.8);letter-spacing:.06em;position:relative}
+.price-body{padding:30px 32px}
+.price-num{display:flex;align-items:flex-end;justify-content:center;gap:6px;margin-bottom:6px}
+.pcur{font-size:20px;font-weight:700;color:var(--lila);margin-bottom:8px}
+.pamt{font-family:var(--S);font-size:62px;font-weight:300;color:var(--lila-deep);line-height:1}
+.pper{font-size:14px;color:var(--muted);margin-bottom:6px}
+.pnote{font-size:12px;color:var(--muted);margin-bottom:24px}
+.pdiv{height:1px;background:var(--lila-soft);margin-bottom:20px}
+.price-list{text-align:left;margin-bottom:20px}
+.price-list h4{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.pi{display:flex;align-items:center;gap:10px;padding:8px 0;font-size:13.5px;color:var(--text);border-bottom:1px solid var(--lila-soft)}
+.pi:last-child{border:none}
+.pi .ck{color:var(--teal-dk);font-weight:700}
+.pbonus{background:var(--lila-soft);border-radius:var(--r);padding:12px 16px;margin-bottom:22px;text-align:center;font-size:13px;font-weight:700;color:var(--lila-dk)}
+.pbtns{display:flex;flex-direction:column;gap:11px}
+.pbtns .btn-p{justify-content:center;width:100%;font-size:15px;padding:17px;border-radius:14px}
+.pbtns .btn-wa{justify-content:center;width:100%;font-size:14px;padding:15px;border-radius:14px}
+.psafe{margin-top:16px;font-size:12px;color:var(--muted);display:flex;align-items:center;justify-content:center;gap:7px}
+
+/* ══ FAQ — blanco ══ */
+.faq{padding:84px 0;background:var(--cream)}
+.faq h2{font-family:var(--S);font-size:clamp(26px,4vw,44px);color:var(--lila-deep);margin-bottom:44px;font-weight:600}
+.faq-list{max-width:700px}
+.fi{border:1.5px solid var(--lila-soft);border-radius:var(--r);margin-bottom:10px;overflow:hidden;transition:border-color .2s}
+.fi:hover{border-color:var(--lila-mid)}
+.fq{padding:18px 22px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-weight:600;font-size:14.5px;color:var(--lila-deep);background:#fff;transition:background .2s;gap:16px;user-select:none}
+.fq:hover{background:var(--lila-pale)}
+.fq .arr{font-size:17px;color:var(--lila);transition:transform .28s;flex-shrink:0}
+.fq.open .arr{transform:rotate(180deg)}
+.fa{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .2s;background:#fff}
+.fa.open{max-height:300px;padding:0 22px 18px}
+.fa p{font-size:13.5px;color:var(--muted);line-height:1.8}
+
+/* ══ WA SECTION — lila ══ */
+.wa-s{background:var(--lila);padding:64px 0;text-align:center;position:relative;overflow:hidden}
+.wa-s::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.08) 1px,transparent 1px);background-size:28px 28px}
+.wa-s-inner{position:relative;z-index:1}
+.wa-s h2{font-family:var(--S);font-size:clamp(24px,4vw,42px);color:#fff;margin-bottom:12px;font-weight:600}
+.wa-s p{color:rgba(255,255,255,.82);font-size:16px;max-width:440px;margin:0 auto 20px}
+.wa-bubble{display:inline-block;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);border-radius:20px 20px 20px 4px;padding:12px 20px;font-family:var(--S);font-size:17px;color:#fff;font-style:italic;margin-bottom:28px}
+.wa-s .btn-wa{background:#fff;color:#1FA855;box-shadow:0 6px 24px rgba(0,0,0,.15)}
+.wa-s .btn-wa:hover{background:rgba(255,255,255,.92)}
+
+/* ══ FINAL CTA — lila deep ══ */
+.fcta{background:var(--lila-deep);padding:100px 0;text-align:center;position:relative;overflow:hidden}
+.fcta::before{content:'';position:absolute;top:-200px;left:50%;transform:translateX(-50%);width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(184,155,200,.15),transparent 70%);pointer-events:none}
+.fcta::after{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.04) 1px,transparent 1px);background-size:30px 30px}
+.fcta-inner{position:relative;z-index:1}
+.fcta .lbl{color:var(--teal);display:block;margin-bottom:14px}
+.fcta h2{font-family:var(--S);color:#fff;font-size:clamp(32px,5.5vw,58px);margin-bottom:18px;line-height:1.1;font-weight:600}
+.fcta h2 em{color:var(--lila);font-style:italic}
+.fcta p{color:rgba(255,255,255,.72);font-size:16px;max-width:440px;margin:0 auto 40px;line-height:1.8}
+.fcta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.fcta-btns .btn-p,.fcta-btns .btn-wa{font-size:15px;padding:17px 38px;border-radius:14px}
+.fcta-btns .btn-p{background:#fff;color:var(--lila-dk);box-shadow:0 6px 24px rgba(0,0,0,.15)}
+.fcta-btns .btn-p:hover{background:var(--lila-pale);color:var(--lila-dk)}
+
+/* ══ FOOTER ══ */
+footer{background:var(--lila-deep);border-top:1px solid rgba(255,255,255,.08);padding:36px 0;text-align:center;color:rgba(255,255,255,.4);font-size:13px}
+.footer-brand{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:10px}
+.footer-brand img{height:40px;width:auto}
+.footer-brand span{font-family:var(--S);font-size:18px;color:var(--lila)}
+
+/* ══ WIDGET INTERACTIVO PROGRAMA ══ */
+.ptab{font-family:var(--R);font-weight:700;font-size:13px;padding:10px 22px;border-radius:50px;border:2px solid var(--lila-mid);background:#fff;color:var(--muted);cursor:pointer;transition:all .2s;letter-spacing:.02em}
+.ptab:hover{border-color:var(--lila);color:var(--lila-dk)}
+.ptab.active{background:var(--lila);color:#fff;border-color:var(--lila);box-shadow:0 4px 16px rgba(184,155,200,.4)}
+.prog-panel{display:none}
+.prog-panel.active{display:block;animation:fadeUp .4s ease both}
+.prog-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-bottom:20px}
+.prog-item{background:#fff;border:1.5px solid var(--lila-soft);border-radius:var(--r);padding:18px;display:flex;gap:14px;align-items:flex-start;transition:all .25s;animation:fadeUp .4s ease var(--delay) both}
+.prog-item:hover{border-color:var(--lila-mid);box-shadow:0 4px 20px rgba(184,155,200,.18);transform:translateY(-2px)}
+.prog-ico{width:42px;height:42px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.prog-title{font-weight:700;font-size:14px;color:var(--lila-deep);margin-bottom:4px}
+.prog-desc{font-size:12.5px;color:var(--muted);line-height:1.6}
+.prog-cta-bar{background:var(--lila-soft);border:1.5px solid var(--lila-mid);border-radius:var(--r-lg);padding:16px 22px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:14px;font-weight:500;color:var(--lila-deep)}
+/* Bonus cards */
+.bonus-full-card{background:#fff;border:1.5px solid var(--lila-soft);border-radius:var(--r-lg);overflow:hidden;transition:all .25s}
+.bonus-full-card:hover{box-shadow:0 8px 30px rgba(184,155,200,.2);transform:translateY(-2px)}
+.bfc-head{padding:18px 22px;display:flex;align-items:center;gap:14px}
+.bfc-num{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--S);font-size:16px;font-weight:600;flex-shrink:0}
+.bfc-title{font-weight:700;font-size:14px;color:var(--lila-deep)}
+.bfc-sub{font-size:11.5px;color:var(--muted);margin-top:2px}
+.bfc-body{padding:0 22px 18px;font-size:13.5px;color:var(--muted);line-height:1.7}
+/* Feedback bubble */
+.feedback-ex{display:flex;flex-direction:column;gap:8px;margin-top:14px;padding:14px;background:var(--lila-pale);border-radius:var(--r)}
+.fb-bubble{padding:10px 14px;border-radius:16px;font-size:12.5px;max-width:90%;line-height:1.6}
+.fb-her{background:rgba(184,155,200,.2);color:var(--lila-deep);align-self:flex-end;border-radius:16px 4px 16px 16px;font-weight:600}
+.fb-kathe{background:#fff;border:1px solid var(--lila-soft);color:var(--text);align-self:flex-start;border-radius:4px 16px 16px 16px}
+
+
+@media(max-width:760px){
+  .hero-inner{grid-template-columns:1fr;gap:36px;padding:64px 24px 56px}
+  .hero-visual{order:1}
+  .hero-btns{align-items:stretch}
+  .btn-p,.btn-wa,.btn-ghost{justify-content:center}
+  .tx-grid{grid-template-columns:1fr}
+  .p3{grid-template-columns:1fr}
+  .about-grid{grid-template-columns:1fr;gap:36px}
+  .about-img{height:300px}
+  .creds{position:static;margin-top:16px}
+  .about h2{font-size:clamp(28px,6vw,40px)}
+  .about p{font-size:16px}
+  .fcta-btns{flex-direction:column;align-items:center}
+  .topbar{gap:8px}
+}
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <span>💜 Programa disponible ahora</span>
+  <span class="topbar-sep"></span>
+  <span>Entra cuando quieras</span>
+  <span class="topbar-sep"></span>
+  <b>30 días para crear hábitos que se quedan</b>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">
+    <img src="https://i.ibb.co/zVzggsX2/Programacion-del-mes-vitalclub-membresia-3.jpg" alt="Kathe Fruto Health Coach" class="nav-logo-img"/>
+    <div class="nav-brand-text">
+      <span class="nav-name">Kathe Fruto</span>
+      <span class="nav-sub">Health Coach</span>
+    </div>
+  </div>
+  <a href="https://checkout.nequi.wompi.co/l/VrXHtl" target="_blank" class="nav-btn">Unirme al programa →</a>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-bg1"></div><div class="hero-bg2"></div><div class="hero-dots"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge au au1">
+        <span class="dot"></span>
+        <span class="lbl" style="font-size:10px">Programa Elijo Cuidarme · Plan 30 días</span>
+      </div>
+      <h1 class="au au2">Cambiar tus hábitos<br/>no tiene que ser<br/><em>tan difícil</em></h1>
+      <p class="hero-sub au au3">En 30 días puedes tener más energía, mejor digestión y hábitos que realmente se quedan — con un plan hecho para ti y alguien que te acompañe de verdad. Sin restricciones absurdas. Sin empezar y dejar.</p>
+      <div class="hero-quote au au4">"Lo que necesitabas no era más fuerza de voluntad.<br/>Era el acompañamiento correcto."</div>
+      <div class="hero-btns au au5">
+        <a href="https://checkout.nequi.wompi.co/l/VrXHtl" target="_blank" class="btn-p" style="border-radius:14px;font-size:16px;padding:17px 34px">🚀 Quiero empezar hoy</a>
+        <a href="https://wa.link/lw9xqv" target="_blank" class="btn-wa" style="border-radius:14px;font-size:15px;padding:15px 30px">💬 Tengo dudas — escríbeme</a>
+      </div>
+      <div class="hero-trust au au5">
+        <span class="ti">100% virtual</span>
+        <span class="ti">Entrada inmediata</span>
+        <span class="ti">Sin contratos</span>
+        <span class="ti">Plan personalizado</span>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="htag t1">🌿 Tu plan listo en 48 horas</div>
+      <div class="hcard">
+        <div class="hcard-top">
+          <div class="hcard-ico" style="background:var(--lila-soft)">🥗</div>
+          <div><div class="hcard-title">Menú personalizado activo</div><div class="hcard-sub">Semana 1 · Perfil completado</div></div>
+        </div>
+        <div class="hprog"><div class="hprog-bar" style="width:85%"></div></div>
+        <div class="hprog-row"><span class="hprog-lbl">Nivel de energía</span><span class="hprog-val">+85%</span></div>
+      </div>
+      <div class="hcard">
+        <div class="hcard-top">
+          <div class="hcard-ico" style="background:var(--teal-soft)">🧘‍♀️</div>
+          <div><div class="hcard-title">Check-in completado</div><div class="hcard-sub">Día 14 · 2 semanas en racha</div></div>
+        </div>
+        <div style="display:flex;gap:5px;margin-top:6px;flex-wrap:wrap">
+          <span style="font-size:10.5px;background:var(--teal-soft);color:var(--teal-dk);padding:3px 9px;border-radius:20px;font-weight:700">✓ Digestión mejor</span>
+          <span style="font-size:10.5px;background:var(--lila-soft);color:var(--lila-dk);padding:3px 9px;border-radius:20px;font-weight:700">✓ Durmiendo bien</span>
+          <span style="font-size:10.5px;background:var(--lila-soft);color:var(--lila-dk);padding:3px 9px;border-radius:20px;font-weight:700">✓ Más energía</span>
+        </div>
+      </div>
+      <div class="hstats">
+        <div class="hstat"><div class="n">30</div><div class="l">días de programa</div></div>
+        <div class="hstat"><div class="n">3</div><div class="l">pilares integrados</div></div>
+      </div>
+      <div class="htag t2">💜 Acompañamiento real, no un PDF</div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span class="tick">Menú personalizado</span><span class="tick">Lista de compras semanal</span><span class="tick">Plan de movimiento</span><span class="tick">Sesión diagnóstica</span><span class="tick">Meditaciones guiadas</span><span class="tick">Comunidad privada</span><span class="tick">Seguimiento semanal</span><span class="tick">3 bonus incluidos</span><span class="tick">Menú personalizado</span><span class="tick">Lista de compras semanal</span><span class="tick">Plan de movimiento</span><span class="tick">Sesión diagnóstica</span><span class="tick">Meditaciones guiadas</span><span class="tick">Comunidad privada</span><span class="tick">Seguimiento semanal</span><span class="tick">3 bonus incluidos</span>
+  </div>
+</div>
+
+<!-- ══ VSL ══ -->
+<section class="vsl">
+  <div class="w">
+    <span class="lbl" style="display:block;margin-bottom:12px">Antes de seguir leyendo</span>
+    <h2>Te lo cuento todo<br/>en este video</h2>
+    <p class="vsl-intro">Qué es Elijo Cuidarme, cómo funciona y por qué es diferente a todo lo que has probado antes.</p>
+    <div class="video-wrap">
+      <iframe src="https://www.youtube.com/embed/Kw-fqu44X0M?rel=0&modestbranding=1" title="Elijo Cuidarme — Kathe Fruto Health Coach" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div>
+    <p class="vsl-sub">¿Lista para dar el primer paso? 💜</p>
+    <div class="vsl-btns">
+      <a href="https://checkout.nequi.wompi.co/l/VrXHtl" target="_blank" class="btn-p" style="border-radius:14px">🚀 Sí, quiero empezar</a>
+      <a href="https://wa.link/lw9xqv" target="_blank" class="btn-wa" style="border-radius:14px">💬 Tengo preguntas primero</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ DOLORES ══ -->
+<section class="pain">
+  <div class="w">
+    <span class="lbl" style="display:block;margin-bottom:12px">¿Te identificas?</span>
+    <h2>Ese cansancio sin explicación.<br/>Ese cuerpo que ya no entiendes.</h2>
+    <p class="pain-intro">Si alguna de estas frases te suena, este programa fue diseñado exactamente para ti.</p>
+    <div class="pain-grid">
+      <div class="pain-card"><div class="p-ico">😮‍💨</div><h4>"Me levanto cansada aunque dormí bien"</h4><p>La fatiga sin causa es una señal que tu cuerpo lleva tiempo enviando. No es normal, aunque lo parezca.</p></div>
+      <div class="pain-card"><div class="p-ico">🫃</div><h4>"Siempre estoy inflamada"</h4><p>La inflamación, el vientre hinchado y la digestión incómoda son tu día a día. Pero no tiene que ser así.</p></div>
+      <div class="pain-card"><div class="p-ico">📋</div><h4>"Ya probé mil dietas y nada funciona"</h4><p>No fallaste tú. Fallaron los planes genéricos que no te consideraron a ti y a tu cuerpo específico.</p></div>
+      <div class="pain-card"><div class="p-ico">🧠</div><h4>"El estrés me tiene desbordada"</h4><p>Duermes mal, comes de prisa, no tienes tiempo para ti. El estrés lo está afectando todo.</p></div>
+      <div class="pain-card"><div class="p-ico">🧩</div><h4>"No sé por dónde empezar"</h4><p>Tanta información contradictoria que ya no sabes qué comer, cómo moverte ni en quién confiar.</p></div>
+      <div class="pain-card"><div class="p-ico">🔁</div><h4>"Empiezo bien y luego lo dejo"</h4><p>No es falta de voluntad. Es que nunca tuviste el acompañamiento real para que los cambios se queden.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PASO A PASO ══ -->
+<section class="steps">
+  <div class="w">
+    <span class="lbl" style="display:block;margin-bottom:12px">¿Cómo funciona?</span>
+    <h2>Tu paso a paso<br/>dentro del programa</h2>
+    <p class="steps-intro">Desde el momento en que te unes hasta el día 30, esto es exactamente lo que pasa.</p>
+    <div class="timeline">
+      <div class="step"><div class="step-num"><span>0</span></div><div class="step-body"><span class="sday">Día 0 — Bienvenida inmediata</span><h3>Pagas y entras de inmediato</h3><p>Tan pronto completas tu pago recibes bienvenida por WhatsApp, acceso a la comunidad y el formulario de diagnóstico. No hay esperas ni fechas de inicio.</p><div class="stags"><span class="stag">✓ Acceso inmediato</span><span class="stag">✓ Comunidad WhatsApp</span><span class="stag">✓ Formulario diagnóstico</span></div></div></div>
+      <div class="step"><div class="step-num"><span>1</span></div><div class="step-body"><span class="sday">Días 1–2 — Tu plan personalizado</span><h3>Preparo todo lo tuyo</h3><p>Con tu formulario configuro en la app tu menú semanal, lista de compras, equivalentes, recetas según tus gustos y plan de movimiento. También preparo tu guía de suplementación.</p><div class="stags"><span class="stag">✓ Menú personalizado</span><span class="stag">✓ Lista de compras</span><span class="stag">✓ Plan de movimiento</span><span class="stag">✓ Guía suplementación</span></div></div></div>
+      <div class="step"><div class="step-num"><span>2</span></div><div class="step-body"><span class="sday">Días 2–3 — Sesión de bienvenida</span><h3>Nos conocemos en videollamada</h3><p>30 minutos por Meet donde te presento tu plan, ajustamos lo necesario y definimos tus 3 intenciones del mes. Una sesión cálida donde realmente te escucho.</p><div class="stags"><span class="stag">✓ 30 min por Meet</span><span class="stag">✓ Ajuste del plan</span><span class="stag">✓ Tus 3 intenciones del mes</span></div></div></div>
+      <div class="step"><div class="step-num"><span>3</span></div><div class="step-body"><span class="sday">Semanas 1–4 — Acompañamiento continuo</span><h3>Aquí es donde ocurre la magia</h3><p>Activaciones semanales en la comunidad, meditaciones, receta de la semana y check-in personal. Puedes enviarme fotos de tus comidas 2 veces por semana para feedback real.</p><div class="stags"><span class="stag">✓ Check-in semanal</span><span class="stag">✓ Revisión de comidas</span><span class="stag">✓ Meditaciones</span><span class="stag">✓ Comunidad activa</span></div></div></div>
+      <div class="step"><div class="step-num"><span>4</span></div><div class="step-body"><span class="sday">Día 30 — Cierre del ciclo</span><h3>Tu resumen y el siguiente paso</h3><p>Resumen personalizado de tu mes: intenciones vs cómo te fue, lo que más te costó, lo que más te gustó y recomendación para el mes siguiente. La mayoría renueva porque ya siente la diferencia.</p><div class="stags"><span class="stag">✓ Resumen de tu mes</span><span class="stag">✓ Recomendación personalizada</span><span class="stag">✓ Renovación opcional</span></div></div></div>
+    </div>
+    <div style="margin-top:44px;text-align:center">
+      <a href="https://checkout.nequi.wompi.co/l/VrXHtl" target="_blank" class="btn-p" style="display:inline-flex;border-radius:14px;padding:16px 36px">🚀 Quiero vivir este proceso</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ANTES/DESPUÉS ══ -->
+<section class="tx">
+  <div class="w">
+    <span class="lbl" style="display:block;margin-bottom:12px">La transformación</span>
+    <h2>De cómo llegas<br/>a cómo te vas</h2>
+    <div class="tx-grid">
+      <div class="tx-col bf"><h3>⬤ Antes de Elijo Cuidarme</h3><div class="tx-item"><div class="txb bf">✕</div><span>Cansancio crónico sin explicación</span></div><div class="tx-item"><div class="txb bf">✕</div><span>Inflamación y digestión incómoda</span></div><div class="tx-item"><div class="txb bf">✕</div><span>Planes genéricos que no funcionan</span></div><div class="tx-item"><div class="txb bf">✕</div><span>Empiezas y abandonas en bucle</span></div><div class="tx-item"><div class="txb bf">✕</div><span>Sola en el proceso, sin guía real</span></div><div class="tx-item"><div class="txb bf">✕</div><span>Confundida con tanta información</span></div><div class="tx-item"><div class="txb bf">✕</div><span>Tu cuerpo se siente ajeno</span></div></div>
+      <div class="tx-col af"><h3>✦ Después de los 30 días</h3><div class="tx-item"><div class="txb af">✓</div><span>Energía real para todo lo que haces</span></div><div class="tx-item"><div class="txb af">✓</div><span>Digestión fluida, menos inflamación</span></div><div class="tx-item"><div class="txb af">✓</div><span>Plan diseñado exactamente para ti</span></div><div class="tx-item"><div class="txb af">✓</div><span>Hábitos que se instalan de verdad</span></div><div class="tx-item"><div class="txb af">✓</div><span>Acompañamiento real que te sostiene</span></div><div class="tx-item"><div class="txb af">✓</div><span>Claridad sobre qué comer y moverte</span></div><div class="tx-item"><div class="txb af">✓</div><span>Conexión con tu cuerpo, sin pelea</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PILARES ══ -->
+<section class="pillars">
+  <div class="w">
+    <span class="lbl" style="display:block;margin-bottom:12px">El método</span>
+    <h2>Tres pilares.<br/>Un solo programa.</h2>
+    <p class="pillars-intro">Porque cuidarte bien no es solo comer sano. Es un trabajo integral de cuerpo, movimiento y mente.</p>
+    <div class="p3">
+      <div class="pcard"><div class="p-ico2">🥗</div><h3>Nutrición consciente</h3><p>No es una dieta. Es entender qué le da energía a tu cuerpo.</p><ul><li>Menú personalizado en app</li><li>Lista de compras semanal</li><li>Equivalentes de alimentos</li><li>Recetas funcionales para ti</li><li>Guía de etiquetado y suplementación</li></ul></div>
+      <div class="pcard"><div class="p-ico2">🧘‍♀️</div><h3>Movimiento consciente</h3><p>Movimiento con propósito, no tortura. Adaptado a tu vida.</p><ul><li>Plan personalizado (casa, gym, aire libre)</li><li>Yoga, pilates o activación diaria</li><li>Según tu fase hormonal</li><li>Rutinas de 20–30 min máximo</li><li>Ajuste progresivo semanal</li></ul></div>
+      <div class="pcard"><div class="p-ico2">🌸</div><h3>Salud mental y hábitos</h3><p>Los hábitos se construyen con acompañamiento, no solo información.</p><ul><li>Meditaciones guiadas por objetivo</li><li>Journaling semanal guiado</li><li>Comunidad de mujeres que entienden</li><li>Gestión del estrés y el sueño</li><li>Autocuidado desde la semana 1</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PROGRAMA INTERACTIVO ══ -->
+<section class="inc-s" id="programa">
+  <div class="w">
+    <span class="lbl" style="display:block;margin-bottom:12px">Explora el programa</span>
+    <h2>Descubre todo lo que<br/>tienes desde el día 1</h2>
+    <p style="color:var(--muted);font-size:16px;margin-bottom:40px;max-width:540px">Toca cada pilar para ver qué incluye exactamente tu programa. Todo está diseñado para que encaje en tu vida, no al revés.</p>
+
+    <!-- Tabs -->
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:28px" id="prog-tabs">
+      <button onclick="showTab('nutricion')" class="ptab active" data-tab="nutricion">🥗 Nutrición</button>
+      <button onclick="showTab('movimiento')" class="ptab" data-tab="movimiento">🧘‍♀️ Movimiento</button>
+      <button onclick="showTab('mental')" class="ptab" data-tab="mental">🌸 Salud mental</button>
+      <button onclick="showTab('bonus')" class="ptab" data-tab="bonus">★ Bonus</button>
+    </div>
+
+    <!-- Panel nutricion -->
+    <div id="tab-nutricion" class="prog-panel active">
+      <div class="prog-grid">
+        <div class="prog-item" style="--delay:0s">
+          <div class="prog-ico" style="background:var(--lila-soft)">📱</div>
+          <div>
+            <div class="prog-title">Menú personalizado en app</div>
+            <div class="prog-desc">Semana a semana, adaptado a tus gustos, restricciones e intolerancias. No un menú genérico — el tuyo.</div>
+          </div>
+        </div>
+        <div class="prog-item" style="--delay:.06s">
+          <div class="prog-ico" style="background:var(--lila-soft)">🛒</div>
+          <div>
+            <div class="prog-title">Lista de compras semanal</div>
+            <div class="prog-desc">Lista lista para el mercado. Sin adivinar qué comprar ni improvisar en la cocina.</div>
+          </div>
+        </div>
+        <div class="prog-item" style="--delay:.12s">
+          <div class="prog-ico" style="background:var(--lila-soft)">🔄</div>
+          <div>
+            <div class="prog-title">Equivalentes de alimentos</div>
+            <div class="prog-desc">¿No conseguiste un ingrediente? Tienes sustitutos aprobados para no romper el plan.</div>
+          </div>
+        </div>
+        <div class="prog-item" style="--delay:.18s">
+          <div class="prog-ico" style="background:var(--lila-soft)">🍳</div>
+          <div>
+            <div class="prog-title">Recetas funcionales</div>
+            <div class="prog-desc">Recetas ricas, accesibles y adaptadas a tus gustos. Nada de comida aburrida o difícil de preparar.</div>
+          </div>
+        </div>
+        <div class="prog-item" style="--delay:.24s">
+          <div class="prog-ico" style="background:var(--lila-soft)">🏷️</div>
+          <div>
+            <div class="prog-title">Guía de etiquetado</div>
+            <div class="prog-desc">Aprende a leer las etiquetas para tomar mejores decisiones en el supermercado.</div>
+          </div>
+        </div>
+        <div class="prog-item" style="--delay:.30s">
+          <div class="prog-ico" style="background:var(--lila-soft)">📷</div>
+          <div>
+            <div class="prog-title">Revisión de comidas (2x semana)</div>
+            <div class="prog-desc">Mandas foto de lo que comiste y recibes feedback cálido y real de Kathe o su equipo.</div>
+          </div>
+        </div>
+      </div>
+      <div class="prog-cta-bar">
+        <span>💜 La nutrición está lista para ti desde el <strong>día 1</strong></span>
+        <a href="https://checkout.nequi.wompi.co/l/VrXHtl" target="_blank" class="btn-p" style="padding:11px 24px;font-size:13px;border-radius:50px">Quiero empezar →</a>
+      </div>
+    </div>
+
+    <!-- Panel movimiento -->
+    <div id="tab-movimiento" class="prog-panel">
+      <div class="prog-grid">
+        <div class="prog-item" style="--delay:0s">
+          <div class="prog-ico" style="background:var(--teal-soft)">🏠</div>
+          <div>
+            <div class="prog-title">Plan adaptado a donde tú estés</div>
+            <div class="prog-desc">¿Casa, gym o aire libre? Se define en tu sesión de bienvenida. El plan se hace para tu realidad, no para una ideal.</div>
+          </div>
+        </div>
+        <div class="prog-item" style="--delay:.06s">
+          <div class="prog-ico" style="background:var(--teal-soft)">⏱️</div>
+          <div>
+            <div class="prog-title">Rutinas de 20–30 minutos</div>
+            <div class="prog-desc">No tienes que pasar horas entrenando. Movimiento con propósito, no cantidad.</div>
+          </div>
+        </div>
+        <div class="prog-item" style="--delay:.12s">
+          <div class="prog-ico" style="background:var(--teal-soft)">🌸</div>
+          <div>
+            <div class="prog-title">Yoga y pilates consciente</div>
+            <div class="prog-desc">Movimiento que conecta cuerpo y mente. Activa la digestión y baja el cortisol.</div>
+          </div>
+        </div>
+        <div class="prog-item" style="--delay:.18s">
+          <div class="prog-ico" style="background:var(--teal-soft)">🌙</div>
+          <div>
+            <div class="prog-title">Ejercicios según fase hormonal</div>
+            <div class="prog-desc">Tu ciclo menstrual afecta tu energía. Aquí el movimiento se adapta a cada fase para ir con tu cuerpo, no contra él.</div>
+          </div>
+        </div>
+        <div class="prog-item" style="--delay:.24s">
+          <div class="prog-ico" style="background:var(--teal-soft)">📈</div>
+          <div>
+            <div class="prog-title">Ajuste progresivo semanal</div>
+            <div class="prog-desc">Tu plan evoluciona contigo. Semana a semana se ajusta según cómo te sientes y cómo avanzas.</div>
+          </div>
+        </div>
+        <div class="prog-item" style="--delay:.30s">
+          <div class="prog-ico" style="background:var(--teal-soft)">🚶‍♀️</div>
+          <div>
+            <div class="prog-title">Activación diaria</div>
+            <div class="prog-desc">Pequeñas activaciones diarias para mantener el cuerpo activo sin necesitar ir al gimnasio.</div>
+          </div>
+        </div>
+      </div>
+      <div class="prog-cta-bar" style="background:var(--teal-soft);border-color:rgba(123,191,181,.4)">
+        <span style="color:var(--teal-dk)">🌿 Tu plan de movimiento listo antes de la <strong>sesión de bienvenida</strong></span>
+        <a href="https://checkout.nequi.wompi.co/l/VrXHtl" target="_blank" class="btn-p" style="padding:11px 24px;font-size:13px;border-radius:50px;background:var(--teal-dk)">Quiero empezar →</a>
+      </div>
+    </div>
+
+    <!-- Panel mental -->
+    <div id="tab-mental" class="prog-panel">
+      <div class="prog-grid">
+        <div class="prog-item" style="--delay:0s">
+          <div class="prog-ico" style="background:#FBEAF0">🎧</div>
+          <div>
+            <div class="prog-title">Meditaciones guiadas por objetivo</div>
+            <div class="prog-desc">Audios para el sueño, el estrés, la energía y el ciclo hormonal. Creados por Kathe para cada momento.</div>
+          </div>
+        </div>
+        <div class="prog-item" style="--delay:.06s">
+          <div class="prog-ico" style="background:#FBEAF0">📓</div>
+          <div>
+            <div class="prog-title">Journaling semanal guiado</div>
+            <div class="prog-desc">Preguntas que llevan a la raíz. La reflexión como herramienta de transformación real.</div>
+          </div>
+        </div>
+        <div class="prog-item" style="--delay:.12s">
+          <div class="prog-ico" style="background:#FBEAF0">👯‍♀️</div>
+          <div>
+            <div class="prog-title">Comunidad privada de mujeres</div>
+            <div class="prog-desc">Un grupo de WhatsApp activo donde todas están en el mismo proceso. No estarás sola.</div>
+          </div>
+        </div>
+        <div class="prog-item" style="--delay:.18s">
+          <div class="prog-ico" style="background:#FBEAF0">😴</div>
+          <div>
+            <div class="prog-title">Gestión del sueño y el estrés</div>
+            <div class="prog-desc">Herramientas concretas para dormir mejor y manejar el estrés sin que se acumule en el cuerpo.</div>
+          </div>
+        </div>
+        <div class="prog-item" style="--delay:.24s">
+          <div class="prog-ico" style="background:#FBEAF0">💆‍♀️</div>
+          <div>
+            <div class="prog-title">Autocuidado desde la semana 1</div>
+            <div class="prog-desc">No es un extra — es parte del programa desde el primer día. Porque cuidarte también es esto.</div>
+          </div>
+        </div>
+        <div class="prog-item" style="--delay:.30s">
+          <div class="prog-ico" style="background:#FBEAF0">📲</div>
+          <div>
+            <div class="prog-title">Check-in semanal real contigo</div>
+            <div class="prog-desc">Cada semana te escribo para saber cómo vas. No es automático — soy yo o mi equipo.</div>
+          </div>
+        </div>
+      </div>
+      <div class="prog-cta-bar" style="background:#FBEAF0;border-color:rgba(212,160,192,.3)">
+        <span style="color:#7B3060">🌸 La salud mental integrada desde el <strong>día 1</strong></span>
+        <a href="https://checkout.nequi.wompi.co/l/VrXHtl" target="_blank" class="btn-p" style="padding:11px 24px;font-size:13px;border-radius:50px;background:#C080A8">Quiero empezar →</a>
+      </div>
+    </div>
+
+    <!-- Panel bonus -->
+    <div id="tab-bonus" class="prog-panel">
+      <div style="display:flex;flex-direction:column;gap:20px">
+        <div class="bonus-full-card">
+          <div class="bfc-head" style="background:var(--lila-soft)">
+            <div class="bfc-num" style="background:var(--lila);color:#fff">01</div>
+            <div>
+              <div class="bfc-title">Guía de suplementación personalizada</div>
+              <div class="bfc-sub">Entregada en tu sesión de bienvenida</div>
+            </div>
+          </div>
+          <div class="bfc-body">
+            <p>Un PDF hecho específicamente para ti con máximo 3–4 suplementos priorizados según tus síntomas. No es un listado genérico — es <em>tu lista</em>, con justificación, cuándo tomarlo y qué marca recomendar.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:7px;margin-top:10px">
+              <span class="stag">✓ Basada en tu formulario</span>
+              <span class="stag">✓ Máx. 4 suplementos</span>
+              <span class="stag">✓ Marcas recomendadas</span>
+              <span class="stag">✓ Qué NO tomar sin médico</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bonus-full-card">
+          <div class="bfc-head" style="background:var(--teal-soft)">
+            <div class="bfc-num" style="background:var(--teal);color:#fff">02</div>
+            <div>
+              <div class="bfc-title">Revisión de comidas con feedback real</div>
+              <div class="bfc-sub">2 veces por semana · WhatsApp</div>
+            </div>
+          </div>
+          <div class="bfc-body">
+            <p>Mandas foto de lo que comiste y recibes feedback cálido y educativo. Así se construye consciencia alimentaria de verdad — no con reglas, sino con comprensión.</p>
+            <div class="feedback-ex">
+              <div class="fb-bubble fb-her">📸 Foto del almuerzo enviada</div>
+              <div class="fb-bubble fb-kathe">Me encanta que incluyeras aguacate! Le da grasa de calidad 💜 La próxima vez prueba añadir una fuente de proteína para que te llene más tiempo.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bonus-full-card">
+          <div class="bfc-head" style="background:#FBEAF0">
+            <div class="bfc-num" style="background:#C080A8;color:#fff">03</div>
+            <div>
+              <div class="bfc-title">Guía de marcas recomendadas</div>
+              <div class="bfc-sub">Se actualiza cada 2–3 meses · PDF descargable</div>
+            </div>
+          </div>
+          <div class="bfc-body">
+            <p>Las marcas que Kathe usa, conoce y recomienda personalmente — en supermercado, tiendas naturistas y marcas latinoamericanas. Sin publicidad: solo lo que realmente funciona.</p>
+            <div style="display:flex;flex-wrap:wrap;gap:7px;margin-top:10px">
+              <span class="stag">✓ Supermercado del día a día</span>
+              <span class="stag">✓ Tiendas naturistas</span>
+              <span class="stag">✓ Marcas latinas y locales</span>
+              <span class="stag">✓ Actualizable automáticamente</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="prog-cta-bar" style="background:var(--lila-soft);border-color:var(--lila-mid)">
+        <span style="color:var(--lila-deep)">★ Los 3 bonus incluidos en tu plan desde el <strong>día 1</strong></span>
+        <a href="https://checkout.nequi.wompi.co/l/VrXHtl" target="_blank" class="btn-p" style="padding:11px 24px;font-size:13px;border-radius:50px">Quiero todo esto →</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══ SOBRE KATHE ══ -->
+<section class="about">
+  <div class="w">
+    <div class="about-grid">
+      <div class="about-photo-wrap">
+        <img src="https://i.ibb.co/4ZwRkcy4/DSC06988.jpg" alt="Kathe Fruto Health Coach" class="about-img"/>
+        <div class="creds">
+          <div class="cred">Diplomado en Nutrición (2021)</div>
+          <div class="cred">Máster Health Coaching — España (2022)</div>
+          <div class="cred">+3 años de práctica profesional</div>
+        </div>
+      </div>
+      <div>
+        <span class="lbl" style="color:var(--teal);display:block;margin-bottom:12px">Hola, soy Kathe</span>
+        <h2>La coach que quería tener<br/>cuando más lo necesitaba</h2>
+        <p>Vengo del mundo corporativo — 15 años donde el estrés, el cansancio y la desconexión con mi cuerpo eran la norma. Hasta que decidí que no era normal, y que merecía más.</p>
+        <p>Hoy soy Health Coach y Coach de Salud y Nutrición con formación en España. Acompaño a mujeres a exactamente lo que yo necesité: alguien que las vea, las conozca y les ayude a construir una vida donde cuidarse no sea otro pendiente más.</p>
+        <p>Este programa lo diseñé desde mi propia experiencia y la de las mujeres que he acompañado. Sé lo que funciona y sé lo que <em style="color:var(--teal)">no</em> funciona.</p>
+        <div class="stats">
+          <div class="stat"><div class="n">+3</div><div class="l">Años de práctica</div></div>
+          <div class="stat"><div class="n">100%</div><div class="l">Virtual</div></div>
+          <div class="stat"><div class="n">3</div><div class="l">Pilares integrados</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TESTIMONIOS ══ -->
+<section class="testi">
+  <div class="w">
+    <span class="lbl" style="display:block;margin-bottom:12px">Lo que dicen ellas</span>
+    <h2>Mujeres reales.<br/>Resultados reales.</h2>
+    <div class="t3">
+      <div class="tcard"><div class="t-stars">★★★★★</div><p class="t-text">"Llevaba años probando cosas y siempre terminaba igual. Con Kathe fue diferente porque ella realmente me conoce. El menú lo siento mío, no prestado."</p><div class="t-author"><div class="tav av1">M</div><div><div class="t-name">María C.</div><div class="t-role">Emprendedora, 34 años</div></div></div></div>
+      <div class="tcard"><div class="t-stars">★★★★★</div><p class="t-text">"Empecé con poca energía y la inflamación era constante. A las dos semanas ya dormía mejor y el vientre estaba más tranquilo. No puedo creer que tardé tanto."</p><div class="t-author"><div class="tav av2">S</div><div><div class="t-name">Sofía L.</div><div class="t-role">Profesional, 41 años</div></div></div></div>
+      <div class="tcard"><div class="t-stars">★★★★★</div><p class="t-text">"Lo que más valoro es el acompañamiento. No es un PDF que te mandan y te dejan sola. Kathe está ahí de verdad, y eso lo cambia absolutamente todo."</p><div class="t-author"><div class="tav av3">V</div><div><div class="t-name">Valentina R.</div><div class="t-role">Profesora, 29 años</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PRECIO ══ -->
+<section class="pricing" id="precio">
+  <div class="w">
+    <span class="lbl" style="display:block;margin-bottom:12px">Inversión</span>
+    <h2>Simple. Claro.<br/>Sin sorpresas.</h2>
+    <p class="pricing-intro">Todo lo que necesitas para transformar tus hábitos en 30 días, en un solo plan.</p>
+    <div class="pricebox">
+      <div class="pricebox-head">
+        <div class="ph-name">Elijo Cuidarme</div>
+        <div class="ph-sub">Programa 30 días · Kathe Fruto Health Coach</div>
+      </div>
+      <div class="price-body">
+        <div class="price-num"><span class="pcur">$</span><span class="pamt">110.000</span></div>
+        <div class="pper">COP por mes · Pago único mensual</div>
+        <div class="pnote">Sin contratos · Sin cargos ocultos · Pago 100% seguro</div>
+        <div class="pdiv"></div>
+        <div class="price-list">
+          <h4>Todo incluido</h4>
+          <div class="pi"><span class="ck">✓</span> Menú personalizado semana a semana en app</div>
+          <div class="pi"><span class="ck">✓</span> Lista de compras + equivalentes de alimentos</div>
+          <div class="pi"><span class="ck">✓</span> Plan de movimiento (casa, gym o aire libre)</div>
+          <div class="pi"><span class="ck">✓</span> Sesión diagnóstica de bienvenida (30 min)</div>
+          <div class="pi"><span class="ck">✓</span> Meditaciones guiadas por objetivo</div>
+          <div class="pi"><span class="ck">✓</span> Comunidad privada de mujeres en WhatsApp</div>
+          <div class="pi"><span class="ck">✓</span> Seguimiento semanal real contigo</div>
+        </div>
+        <div class="pbonus">★ BONUS: Guía suplementación · Revisión de comidas · Guía de marcas</div>
+        <div class="pbtns">
+          <a href="https://checkout.nequi.wompi.co/l/VrXHtl" target="_blank" class="btn-p">🚀 Unirme al programa ahora</a>
+          <a href="https://wa.link/lw9xqv" target="_blank" class="btn-wa">💬 Tengo dudas — escríbeme antes</a>
+        </div>
+        <p class="psafe">🔒 Pago 100% seguro · Sin contratos · Sin compromisos</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FAQ ══ -->
+<section class="faq">
+  <div class="w">
+    <span class="lbl" style="display:block;margin-bottom:12px">Preguntas frecuentes</span>
+    <h2>Lo que todas preguntan<br/>antes de entrar</h2>
+    <div class="faq-list">
+      <div class="fi"><div class="fq" onclick="tf(this)">¿Necesito experiencia previa? <span class="arr">▾</span></div><div class="fa"><p>Para nada. El programa se adapta a donde estás hoy. La sesión de bienvenida es justamente para entender tu punto de partida y construir desde ahí.</p></div></div>
+      <div class="fi"><div class="fq" onclick="tf(this)">¿Cuánto tiempo necesito al día? <span class="arr">▾</span></div><div class="fa"><p>El programa se integra a tu vida, no al revés. Con 20–30 minutos al día es suficiente para empezar a ver resultados reales.</p></div></div>
+      <div class="fi"><div class="fq" onclick="tf(this)">¿Es un programa de pérdida de peso? <span class="arr">▾</span></div><div class="fa"><p>No. El foco es energía, bienestar, digestión y hábitos sostenibles. El indicador de éxito es cómo te sientes, no cuánto pesas.</p></div></div>
+      <div class="fi"><div class="fq" onclick="tf(this)">¿Puedo unirme desde otro país? <span class="arr">▾</span></div><div class="fa"><p>Sí, el programa es 100% virtual. Para pagos desde el exterior escríbeme al WhatsApp para coordinar.</p></div></div>
+      <div class="fi"><div class="fq" onclick="tf(this)">¿Puedo cancelar en cualquier momento? <span class="arr">▾</span></div><div class="fa"><p>Sin contratos ni compromisos forzados. El programa se renueva mes a mes solo si tú lo decides. Recomendamos al menos 30 días para sentir la diferencia real.</p></div></div>
+      <div class="fi"><div class="fq" onclick="tf(this)">¿En qué se diferencia de una consulta nutricional? <span class="arr">▾</span></div><div class="fa"><p>Una consulta te da un plan puntual. Elijo Cuidarme te da plan nutricional + movimiento + salud mental + comunidad + seguimiento + 3 bonus… todo en un solo lugar con acompañamiento continuo.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ WA SECTION ══ -->
+<section class="wa-s">
+  <div class="w">
+    <div class="wa-s-inner">
+      <h2>¿Tienes dudas antes de comprar?</h2>
+      <p>Escríbeme por WhatsApp y te respondo personalmente. Sin bots, sin respuestas automáticas — soy yo.</p>
+      <div class="wa-bubble">"Hola Kathe, tengo una pregunta sobre el programa"</div>
+      <br/>
+      <a href="https://wa.link/lw9xqv" target="_blank" class="btn-wa" style="display:inline-flex;border-radius:14px;padding:16px 36px">💬 Escribirle a Kathe por WhatsApp →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FINAL CTA ══ -->
+<section class="fcta">
+  <div class="w">
+    <div class="fcta-inner">
+      <span class="lbl" style="display:block;margin-bottom:14px">¿Lista?</span>
+      <h2>Llevas tiempo diciéndote<br/>que vas a <em>empezar pronto</em>.<br/>Hoy es ese día.</h2>
+      <p>Elijo Cuidarme no te pide que seas perfecta. Solo que elijas, una vez, comenzar. El resto lo hacemos juntas. 💜</p>
+      <div class="fcta-btns">
+        <a href="https://checkout.nequi.wompi.co/l/VrXHtl" target="_blank" class="btn-p">🚀 Empezar ahora</a>
+        <a href="https://wa.link/lw9xqv" target="_blank" class="btn-wa">💬 Tengo una pregunta</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="w">
+    <div class="footer-brand">
+      <img src="https://i.ibb.co/zVzggsX2/Programacion-del-mes-vitalclub-membresia-3.jpg" alt="Kathe Fruto Health Coach"/>
+      <span>Kathe Fruto Health Coach</span>
+    </div>
+    <p style="margin-bottom:6px">@kathefrutohealthcoach · Programa Elijo Cuidarme · Plan 30 días</p>
+    <p>Porque cuidarte bien no debería ser complicado. 💜</p>
+  </div>
+</footer>
+
+<script>
+function showTab(id){
+  document.querySelectorAll('.prog-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.ptab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('active');
+  document.querySelectorAll('.ptab').forEach(t=>{if(t.dataset.tab===id)t.classList.add('active')});
+}
+function tf(el){
+  const a=el.nextElementSibling,o=el.classList.contains('open');
+  document.querySelectorAll('.fq').forEach(q=>q.classList.remove('open'));
+  document.querySelectorAll('.fa').forEach(x=>x.classList.remove('open'));
+  if(!o){el.classList.add('open');a.classList.add('open')}
+}
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';obs.unobserve(e.target)}})
+},{threshold:.08});
+document.querySelectorAll('.pain-card,.pcard,.iitem,.tcard,.tx-col,.step-body,.hcard').forEach((el,i)=>{
+  el.style.opacity='0';el.style.transform='translateY(22px)';
+  el.style.transition='opacity .55s ease, transform .55s ease';
+  el.style.transitionDelay=(i*.07)+'s';
+  obs.observe(el);
+});
+setTimeout(()=>{
+  document.querySelectorAll('.hprog-bar').forEach(b=>{
+    const w=b.style.width;b.style.width='0';
+    setTimeout(()=>{b.style.transition='width 1.4s ease';b.style.width=w},400);
+  });
+},800);
+</script>
+</body>
+</html>
